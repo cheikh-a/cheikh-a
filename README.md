@@ -1,5 +1,5 @@
-- 👋 Hi, I’m @cheikh-a
-- 👀 I’m an economist working on incomplete (partially identified) models and their application to economic issues such as labor markets dynamics. I’m currently conducting research on participation linked to group characteristics (gender, physical and mental (dis)abilities, ethnicities, etc.). I mostly use subjective expectations data, be it numerical or textual, and am familiar with the identification of the non-classical measurement errors in it due to: rounding, ambiguity, etc. 
+- 👋 Hi, I’m Cheikh Ahmadou Mbacké Ndiaye.
+- 👀 I’m a PhD student in economics working on incomplete (partially identified) models and their application to economic issues such as labor markets dynamics. I’m currently conducting research on participation linked to group characteristics (gender, physical and mental (dis)abilities, ethnicities, etc.). I mostly use subjective expectations data, be it numerical or textual, and am familiar with the identification of the non-classical measurement errors in it due to: rounding, ambiguity, etc. 
          My main research interests: microeconometrics, behavioral and labor economics.
          My secondary fields: experimental and development economics. 
 - 🌱 I’m currently learning Python, SQL and building websites.
