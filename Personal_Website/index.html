@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            /* CSS for Sticky Navbar */
+            .navbar {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds a shadow for depth */
+            }
+
+            /* Ensure padding is added to body to avoid content being hidden behind the navbar */
+            body { 
+            padding-top: 56px; /* Adjust this value based on the height of your navbar */
+            }
+
+            /* Smooth scroll */
+            html {
+            scroll-behavior: smooth;
+            }
+
+            /* Style for navigation bar links */
+            .navbar-nav .nav-link {
+            color: white;
+            }
+
+            .navbar-nav .nav-link:hover {
+            color: #f8f9fa; /* Slightly lighter white when hovering over links */
+            }
+
+            /* Media query for responsive navbar collapsing */
+            @media (max-width: 992px) {
+            .navbar-collapse {
+                background-color: #343a40; /* Same as navbar color for seamless look */
+            }
+            }
+            .about-section {
+                text-align: center; /* Center the title and image */
+                padding: 50px;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+                background-image: url('images/about/Me.jpg'); /* Adjusted for your profile picture */
+                background-size: cover;
+                border-radius: 50%;
+                margin: 20px auto; /* Centers the image horizontally */
+            }
+
+            .about-text {
+                max-width: 600px; /* Adjust the width as needed to maintain the rectangular shape */
+                margin: 20px auto; /* Centers the container horizontally */
+                text-align: justify; /* Justifies text both left and right */
+                padding: 20px; /* Adds padding inside the container for better spacing */
+            }
+
+
+
+            .projects-section h2, .skills-section h2, .contact-section h2 {
+                margin-bottom: 40px;
+                font-size: 2.5rem;
+            }
+            .card, .skills-section .card {
+                box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow around the card */
+            }
+            .card-img-top, .skills-section .card-img-top {
+                max-height: 180px; /* Adjust this value to fit the image properly in the card */
+                object-fit: cover; /* This makes sure the image covers the area properly */
+            }
+            .card-body, .skills-section .card-body {
+                padding: 15px;
+            }
+            .card-title, .skills-section .card-title {
+                font-size: 1.25rem;
+            }
+            .card-text, .skills-section .card-text {
+                margin-bottom: 15px;
+            }
+            /* Additional CSS for Contact Section */
+            .contact-section {
+            padding: 50px 0;
+            }
+            .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            }
+            .contact-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            }
+            .social-icon {
+            width: 50px; /* Size of your icons */
+            margin-bottom: 10px;
+            }
+            /* Hover effect for icons */
+            .social-icon:hover {
+            opacity: 0.7;
+            }
+            /* Style for links in the Contact section */
+            .contact-section a {
+            color: #fff;
+            text-decoration: none; /* Removes underline from links */
+            display: inline-block; /* Allows for margin on the bottom */
+            margin-bottom: 10px;
+            }
+            .contact-section a:hover {
+            color: #ddd; /* Color when hovering over the link */
+            }
+            
+            /* Ensuring all nav items are left-aligned */
+            .navbar-collapse {
+                justify-content: flex-start; /* Aligns navbar items to the left */
+            }
+        
+    </style>
+</head>
+<body>
+
+        <!-- Sticky Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+            <a class="navbar-brand" href="#home">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+    
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h1>About</h1>
+        <div class="profile-pic"></div>
+        <div class="about-text">
+            <p>Welcome to personal website! My name is Cheikh, a PhD Candidate in Economics at Université Laval, in Quebec, Canada. I specialize in partially identified models, applying them to economic issues such as labor market dynamics, including participation, transitions, and retirement. My approach often incorporates the analysis of subjective expectations data, both numerical and textual, focusing on identifying non-classical measurement errors such as rounding, bunching, and ambiguity.</p>
+            <p>When I'm not buried in research, I'm all about music, sports, and movies, and spending time with my love, Aminata. Also, I sometimes joke that in another life, I’d be a Latin American novelist—as long as I didn’t have to wear a mustache.</p>
+        </section>
+
+<section id="projects" class="projects-section bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Projects</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Project 1 -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/projects/1.jpg" class="card-img-top" alt="Project 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Title 1</h5>
+                        <p class="card-text">This is a brief description of the first project. It can be expanded to provide more detail about the project's purpose, technologies used, or any other relevant information.</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/projects/2.jpg" class="card-img-top" alt="Project 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Title 2</h5>
+                        <p class="card-text">This is a brief description of the second project. Include insights on the project's scope, results, or any special mentions that could intrigue the viewer.</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/projects/3.jpg" class="card-img-top" alt="Project 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Title 3</h5>
+                        <p class="card-text">This is a brief description of the third project. This might include project objectives, collaboration if any, and the impact of the project.</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="skills" class="skills-section bg-white py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Skills</h2>
+        <div class="row text-center">
+            <!-- Skill 1 -->
+            <div class="col-6 col-md-3 mb-4">
+                <img src="images/skills/1.png" class="mb-3" alt="Skill 1 Icon" style="width: 60px; height: 60px;">
+                <h5 class="mb-2">Stata</h5>
+                <p class="text-muted">Description of skill 1 or how it was applied.</p>
+            </div>
+            <!-- Skill 2 -->
+            <div class="col-6 col-md-3 mb-4">
+                <img src="images/skills/2.png" class="mb-3" alt="Skill 2 Icon" style="width: 60px; height: 60px;">
+                <h5 class="mb-2">Python</h5>
+                <p class="text-muted">Description of skill 2 or how it was applied.</p>
+            </div>
+            <!-- Skill 3 -->
+            <div class="col-6 col-md-3 mb-4">
+                <img src="images/skills/3.png" class="mb-3" alt="Skill 3 Icon" style="width: 60px; height: 60px;">
+                <h5 class="mb-2">OxMetrics</h5>
+                <p class="text-muted">Description of skill 3 or how it was applied.</p>
+            </div>
+            <!-- Skill 4 -->
+            <div class="col-6 col-md-3 mb-4">
+                <img src="images/skills/4.png" class="mb-3" alt="Skill 4 Icon" style="width: 60px; height: 60px;">
+                <h5 class="mb-2">R</h5>
+                <p class="text-muted">Description of skill 4 or how it was applied.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Contact Me</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Contact Form (you might want to replace this with your actual form processing script) -->
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <!-- Social Icons -->
+            <a href="https://www.linkedin.com/in/camndiaye/" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://twitter.com/a__cheikh?t=rXLxHzlq6Om09NMF5Q2N9Q" target="_blank"><img src="icons/twitter.png" alt="Twitter" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://github.com/cheikh-a" target="_blank"><img src="icons/github.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://www.fss.ulaval.ca/economique/recherche/doctorants-stagiaires-postdoctoraux/cheikh-ahmadou-mbacke-ndiaye" target="_blank"><img src="icons/favicon.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
