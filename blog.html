@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <meta name="description" content="Cheikh Ahmadou Mbacké Ndiaye's blog">
+
+    <!-- Open Graph meta tags for better social media integration -->
+    <meta property="og:title" content="Blog" />
+    <meta property="og:description" content="Cheikh Ahmadou Mbacké Ndiaye's blog" />
+    <meta property="og:url" content="https://yourdomain.com/blog/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://yourdomain.com/assets/img/Me.jpg" />
+    <meta property="twitter:image" content="https://yourdomain.com/assets/img/twitter.png" />
+
+    <!-- Twitter meta tags -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="@a__cheikh" />
+    <meta property="twitter:creator" content="@a__cheikh" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://yourdomain.com/css/fontello.css">
+    <link rel="stylesheet" href="https://yourdomain.com/css/tufte.css">
+
+    <!-- Canonical link -->
+    <link rel="canonical" href="https://yourdomain.com/blog/">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://yourdomain.com/assets/img/favicon.ico">
+
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f5f5;
+        }
+
+        header {
+            background-color: #f7f5f5;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav.group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav.group a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav.group a.active {
+            border-bottom: 2px solid #333;
+        }
+
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #e5e5e5;
+            background-color: #f7f5f5;
+        }
+
+        .footer .icon-github-squared,
+        .footer .icon-twitter-squared {
+            color: black;
+            font-size: x-large;
+            margin: 0 10px;
+        }
+
+        .footer a {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .blog-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: justify;
+        }
+
+        .blog-section h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .paper {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            background-color: #f7f5f5;
+        }
+
+        .paper-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .expander {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 5px;
+            border-bottom: 2px solid black;
+        }
+
+        .expander:after {
+            content: ' +';
+            font-weight: normal;
+        }
+
+        .expander.active:after {
+            content: ' -';
+        }
+
+        .abstract.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="position: absolute; left: 20px; font-weight: bold; font-size: 1.5em; color: #333;">CAMN</div>
+        <div style="display: flex; gap: 20px;">
+        <a href="index.html">About</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="blog.html">Blog</a>
+        <a href="dontgothere.html">Don't go there...</a>
+    </nav>
+</header>
+
+<section class="blog-section">
+    <h2>Economics</h2>
+    <div class="paper">
+        <div class="paper-title">
+            POTW: Ericson and Laibson (2018)
+        </div>
+        <div class="expander" onclick="window.open('blog-post-1.html', '_blank')">Read Article</div>
+    </div>
+    <div class="paper">
+        <div class="paper-title">
+            Chetty et al. (2014)
+        </div>
+        <div class="expander" onclick="window.open('blog-post-2.html', '_blank')">Read Article</div>
+    </div>
+    <div class="paper">
+        <div class="paper-title">
+            Hanna et al. (2014)
+        </div>
+        <div class="expander" onclick="window.open('blog-post-3.html', '_blank')">Read Article</div>
+    </div>
+</section>
+
+<section class="blog-section">
+    <h2>Miscellaneous</h2>
+    <div class="paper">
+        <div class="paper-title">
+            Retour ou recours aux sources ?
+        </div>
+        <div class="expander" onclick="window.open('blog-post-4.html', '_blank')">Read Article</div>
+    </div>
+    <div class="paper">
+        <div class="paper-title">
+            Traversées de l'Islam : Des Sables d'Arabie aux Confluences Culturelles
+        </div>
+        <div class="expander" onclick="window.open('blog-post-5.html', '_blank')">Read Article</div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <hr class="slender">
+        <div class="credits">
+            <a href="https://www.linkedin.com/in/camndiaye/" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://twitter.com/a__cheikh?t=rXLxHzlq6Om09NMF5Q2N9Q" target="_blank"><img src="icons/twitter.png" alt="Twitter" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://github.com/cheikh-a" target="_blank"><img src="icons/github.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://www.fss.ulaval.ca/economique/recherche/doctorants-stagiaires-postdoctoraux/cheikh-ahmadou-mbacke-ndiaye" target="_blank"><img src="icons/favicon.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,270 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            /* CSS for Sticky Navbar */
-            .navbar {
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds a shadow for depth */
-            }
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <meta name="description" content="Cheikh Ahmadou Mbacké Ndiaye's website">
 
-            /* Ensure padding is added to body to avoid content being hidden behind the navbar */
-            body { 
-            padding-top: 56px; /* Adjust this value based on the height of your navbar */
-            }
+    <!-- Open Graph meta tags for better social media integration -->
+    <meta property="og:title" content="About" />
+    <meta property="og:description" content="Cheikh Ahmadou Mbacké Ndiaye's website" />
+    <meta property="og:url" content="https://yourdomain.com/about/" />
+    <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="Cheikh Ahmadou Mbacké" />
+    <meta property="profile:last_name" content="Ndiaye" />
+    <meta property="og:image" content="https://yourdomain.com/assets/img/Me.jpg" />
+    <meta property="twitter:image" content="https://yourdomain.com/assets/img/twitter.png" />
 
-            /* Smooth scroll */
-            html {
-            scroll-behavior: smooth;
-            }
+    <!-- Twitter meta tags -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="@a__cheikh" />
+    <meta property="twitter:creator" content="@a__cheikh" />
 
-            /* Style for navigation bar links */
-            .navbar-nav .nav-link {
-            color: white;
-            }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
-            .navbar-nav .nav-link:hover {
-            color: #f8f9fa; /* Slightly lighter white when hovering over links */
-            }
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://yourdomain.com/css/fontello.css">
+    <link rel="stylesheet" href="https://yourdomain.com/css/tufte.css">
 
-            /* Media query for responsive navbar collapsing */
-            @media (max-width: 992px) {
-            .navbar-collapse {
-                background-color: #343a40; /* Same as navbar color for seamless look */
-            }
-            }
-            .about-section {
-                text-align: center; /* Center the title and image */
-                padding: 50px;
-            }
+    <!-- Canonical link -->
+    <link rel="canonical" href="https://yourdomain.com/about/">
 
-            .profile-pic {
-                width: 150px;
-                height: 150px;
-                background-image: url('images/about/Me.jpg'); /* Adjusted for your profile picture */
-                background-size: cover;
-                border-radius: 50%;
-                margin: 20px auto; /* Centers the image horizontally */
-            }
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://yourdomain.com/assets/img/favicon.ico">
 
-            .about-text {
-                max-width: 600px; /* Adjust the width as needed to maintain the rectangular shape */
-                margin: 20px auto; /* Centers the container horizontally */
-                text-align: justify; /* Justifies text both left and right */
-                padding: 20px; /* Adds padding inside the container for better spacing */
-            }
+    <style>
+        body {
+            font-family: 'Merriweather', serif; /* Using the new fancy font */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f5f5;
+        }
 
+        a {
+            color: #8B4513; /* Light brown color */
+            text-decoration: none;
+        }
 
+        a:hover {
+            text-decoration: underline;
+        }
 
-            .projects-section h2, .skills-section h2, .contact-section h2 {
-                margin-bottom: 40px;
-                font-size: 2.5rem;
-            }
-            .card, .skills-section .card {
-                box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow around the card */
-            }
-            .card-img-top, .skills-section .card-img-top {
-                max-height: 180px; /* Adjust this value to fit the image properly in the card */
-                object-fit: cover; /* This makes sure the image covers the area properly */
-            }
-            .card-body, .skills-section .card-body {
-                padding: 15px;
-            }
-            .card-title, .skills-section .card-title {
-                font-size: 1.25rem;
-            }
-            .card-text, .skills-section .card-text {
-                margin-bottom: 15px;
-            }
-            /* Additional CSS for Contact Section */
-            .contact-section {
-            padding: 50px 0;
-            }
-            .contact-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            }
-            .contact-section p {
-            font-size: 1.2rem;
+        header {
+            background-color: #f7f5f5;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav.group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav.group a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav.group a.active {
+            border-bottom: 2px solid #333;
+        }
+
+        article.group {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        article h1 {
+            font-size: 2.5em;
             margin-bottom: 20px;
-            }
-            .social-icon {
-            width: 50px; /* Size of your icons */
+            text-align: justify;
+        }
+
+        article p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        article ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        article li {
             margin-bottom: 10px;
-            }
-            /* Hover effect for icons */
-            .social-icon:hover {
-            opacity: 0.7;
-            }
-            /* Style for links in the Contact section */
-            .contact-section a {
-            color: #fff;
-            text-decoration: none; /* Removes underline from links */
-            display: inline-block; /* Allows for margin on the bottom */
-            margin-bottom: 10px;
-            }
-            .contact-section a:hover {
-            color: #ddd; /* Color when hovering over the link */
-            }
-            
-            /* Ensuring all nav items are left-aligned */
-            .navbar-collapse {
-                justify-content: flex-start; /* Aligns navbar items to the left */
-            }
-        
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 20px;
+            background-image: url('assets/img/Me.jpg');
+            background-size: cover;
+        }
+
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #e5e5e5;
+            background-color: #f7f5f5;
+        }
+
+        .footer .icon-github-squared,
+        .footer .icon-twitter-squared {
+            color: black;
+            font-size: x-large;
+            margin: 0 10px;
+        }
+
+        .footer a {
+            color: black;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
-        <!-- Sticky Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <div class="container">
-            <a class="navbar-brand" href="#home">Portfolio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#skills">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
-                </li>
-                </ul>
-            </div>
-            </div>
-        </nav>
+<header>
+    <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="position: absolute; left: 20px; font-weight: bold; font-size: 1.5em; color: #333;">CAMN</div>
+        <div style="display: flex; gap: 20px;">
+        <a class="active" href="index.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="blog.html">Blog</a>
+        <a href="dontgothere.html">Don't go there...</a>
+    </nav>
+</header>
+
+<article class="group">
+    <h1>About</h1>
+    <p>I’m Cheikh Ahmadou Mbacké Ndiaye.</p>
+    <div class="profile-picture"></div>
+    <p>You can reach me at [candi12] at ulaval dot com.</p>
+    <p>Here is my <a href="CV_Cheikh.pdf" target="_blank">CV</a>.</p> <!-- Added CV link -->
     
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <h1>About</h1>
-        <div class="profile-pic"></div>
-        <div class="about-text">
-            <p>Welcome to personal website! My name is Cheikh, a PhD Candidate in Economics at Université Laval, in Quebec, Canada. I specialize in partially identified models, applying them to economic issues such as labor market dynamics, including participation, transitions, and retirement. My approach often incorporates the analysis of subjective expectations data, both numerical and textual, focusing on identifying non-classical measurement errors such as rounding, bunching, and ambiguity.</p>
-            <p>When I'm not buried in research, I'm all about music, sports, and movies, and spending time with my love, Aminata. Also, I sometimes joke that in another life, I’d be a Latin American novelist—as long as I didn’t have to wear a mustache.</p>
-        </section>
+    <h2 id="Work">Works</h2>
+    <ul>
+        <li>I specialize in partially identified models, applying them to economic issues such as labor market dynamics, including participation, transitions, and retirement. My approach often incorporates the analysis of subjective expectations data, both numerical and textual, focusing on identifying non-classical measurement errors such as rounding, bunching, and ambiguity.</li>
+        <li>I'm also interested in examining how heightened scrutiny towards politicians is driven by economic factors, such as loss aversion related to direct taxation and the sense of ownership. In my future research, I intend to focus on this agenda within the context of high economic informality, particularly in Senegal and other West African countries.</li>
+        <li>Other research interests include investigating how stereotype threats influence gender differences in educational choices and the timing of key events in women's educational trajectories in African countries. To achieve this, I use experimental tools for precise measurement.</li>
+    </ul>
 
-<section id="projects" class="projects-section bg-light py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Projects</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Project 1 -->
-            <div class="col">
-                <div class="card">
-                    <img src="images/projects/1.jpg" class="card-img-top" alt="Project 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Project Title 1</h5>
-                        <p class="card-text">This is a brief description of the first project. It can be expanded to provide more detail about the project's purpose, technologies used, or any other relevant information.</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 2 -->
-            <div class="col">
-                <div class="card">
-                    <img src="images/projects/2.jpg" class="card-img-top" alt="Project 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Project Title 2</h5>
-                        <p class="card-text">This is a brief description of the second project. Include insights on the project's scope, results, or any special mentions that could intrigue the viewer.</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 3 -->
-            <div class="col">
-                <div class="card">
-                    <img src="images/projects/3.jpg" class="card-img-top" alt="Project 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Project Title 3</h5>
-                        <p class="card-text">This is a brief description of the third project. This might include project objectives, collaboration if any, and the impact of the project.</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h2 id="faq">News and other updates</h2>
+    <li>Section to be filled soon...</li>
 
-</section>
-<section id="skills" class="skills-section bg-white py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Skills</h2>
-        <div class="row text-center">
-            <!-- Skill 1 -->
-            <div class="col-6 col-md-3 mb-4">
-                <img src="images/skills/1.png" class="mb-3" alt="Skill 1 Icon" style="width: 60px; height: 60px;">
-                <h5 class="mb-2">Stata</h5>
-                <p class="text-muted">Description of skill 1 or how it was applied.</p>
-            </div>
-            <!-- Skill 2 -->
-            <div class="col-6 col-md-3 mb-4">
-                <img src="images/skills/2.png" class="mb-3" alt="Skill 2 Icon" style="width: 60px; height: 60px;">
-                <h5 class="mb-2">Python</h5>
-                <p class="text-muted">Description of skill 2 or how it was applied.</p>
-            </div>
-            <!-- Skill 3 -->
-            <div class="col-6 col-md-3 mb-4">
-                <img src="images/skills/3.png" class="mb-3" alt="Skill 3 Icon" style="width: 60px; height: 60px;">
-                <h5 class="mb-2">OxMetrics</h5>
-                <p class="text-muted">Description of skill 3 or how it was applied.</p>
-            </div>
-            <!-- Skill 4 -->
-            <div class="col-6 col-md-3 mb-4">
-                <img src="images/skills/4.png" class="mb-3" alt="Skill 4 Icon" style="width: 60px; height: 60px;">
-                <h5 class="mb-2">R</h5>
-                <p class="text-muted">Description of skill 4 or how it was applied.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    <h2 id="recommendations">Miscellaneous</h2>
+    <li>I try to only recommend things that I’ve watched/read at least twice. For more, check out my <a href="dontgothere.html">playlist and recommendations</a> page.</li>
+    <li>For some opinions and other writings, visit this <a href="blog.html">blogpost</a> page.</li> <!-- Added link to "Don't go there" page -->
+   <!--  <p>Fiction: I like <em>The Idiot</em>, <em>The Savage Detectives</em> and <em>The Brothers Karamazov</em>.</p>
+    <p>Nonfiction: I won't torture you (but wait: <em>L'Âme de Billie Holiday</em> and <em>Worldly Philosophers</em>).</p>
+    <p>Movies: I like every <em>Tarantino</em>, <em>No Country for Old Men</em> and <em>High Fidelity</em>. I also entertain a certain passion for Scorsese filmography.</p>-->
+</article>
 
-<section id="contact" class="contact-section bg-light py-5">
+<footer class="footer">
     <div class="container">
-        <h2 class="text-center mb-4">Contact Me</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <!-- Contact Form (you might want to replace this with your actual form processing script) -->
-                <form>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Your Email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-        <div class="text-center mt-5">
-            <!-- Social Icons -->
+        <hr class="slender">
+        <div class="credits">
             <a href="https://www.linkedin.com/in/camndiaye/" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn" style="width: 40px; margin-right: 15px;"></a>
             <a href="https://twitter.com/a__cheikh?t=rXLxHzlq6Om09NMF5Q2N9Q" target="_blank"><img src="icons/twitter.png" alt="Twitter" style="width: 40px; margin-right: 15px;"></a>
             <a href="https://github.com/cheikh-a" target="_blank"><img src="icons/github.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
             <a href="https://www.fss.ulaval.ca/economique/recherche/doctorants-stagiaires-postdoctoraux/cheikh-ahmadou-mbacke-ndiaye" target="_blank"><img src="icons/favicon.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
         </div>
     </div>
-</section>
-
-
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

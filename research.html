@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research</title>
+    <meta name="description" content="Cheikh Ahmadou Mbacké Ndiaye's research">
+
+    <!-- Open Graph meta tags for better social media integration -->
+    <meta property="og:title" content="Research" />
+    <meta property="og:description" content="Cheikh Ahmadou Mbacké Ndiaye's research" />
+    <meta property="og:url" content="https://yourdomain.com/research/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://yourdomain.com/assets/img/Me.jpg" />
+    <meta property="twitter:image" content="https://yourdomain.com/assets/img/twitter.png" />
+
+    <!-- Twitter meta tags -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="@a__cheikh" />
+    <meta property="twitter:creator" content="@a__cheikh" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://yourdomain.com/css/fontello.css">
+    <link rel="stylesheet" href="https://yourdomain.com/css/tufte.css">
+
+    <!-- Canonical link -->
+    <link rel="canonical" href="https://yourdomain.com/research/">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://yourdomain.com/assets/img/favicon.ico">
+
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f5f5;
+        }
+
+        header {
+            background-color: #f7f5f5;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav.group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav.group a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav.group a.active {
+            border-bottom: 2px solid #333;
+        }
+
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #e5e5e5;
+            background-color: #f7f5f5;
+        }
+
+        .footer .icon-github-squared,
+        .footer .icon-twitter-squared {
+            color: black;
+            font-size: x-large;
+            margin: 0 10px;
+        }
+
+        .footer a {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .wp-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: justify;
+        }
+
+        .wp-section h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .wip-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: justify;
+        }
+
+        .wip-section h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .paper {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            background-color: #f7f5f5;
+        }
+
+        .paper-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .abstract {
+            display: none;
+            margin-top: 10px;
+            font-size: 1rem;
+            padding: 10px;
+            border-left: 3px solid black;
+            background-color: #f9f9f9;
+        }
+
+        .expander {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 5px;
+            border-bottom: 2px solid black;
+        }
+
+        .expander:after {
+            content: ' +';
+            font-weight: normal;
+        }
+
+        .expander.active:after {
+            content: ' -';
+        }
+
+        .abstract.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
+            <div style="position: absolute; left: 20px; font-weight: bold; font-size: 1.5em; color: #333;">CAMN</div>
+            <div style="display: flex; gap: 20px;">
+            <a href="index.html">About</a>
+            <a class="active" href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <a href="dontgothere.html">Don't go there...</a>
+        </nav>
+    </header>    
+
+<section class="wp-section">
+    <h2>Working Papers</h2>
+    <div class="paper">
+        <div class="paper-title">
+            The Measurement of Labor Market Expectations of Persons with Disabilities in Canada,
+            with <a href="https://www.fss.ulaval.ca/notre-faculte/repertoire-du-personnel/charles-bellemare" target="_blank">Charles Bellemare</a> and 
+            <a href="https://lucbissonnette.com/" target="_blank">Luc Bissonnette</a>.
+        </div>
+        <div class="expander" onclick="toggleAbstract('abstract1', this)">Show Abstract</div>
+        <div class="expander" onclick="window.open('path/to/paper1.pdf', '_blank')">Read Paper</div>
+        <div id="abstract1" class="abstract">
+            <p>Individuals with disabilities face multiple challenges to successfully integrate the labor market and find satisfactory jobs. In this paper, we assess a supply-side explanation for the relatively lower labor market outcomes of persons with disabilities by contrasting their subjective beliefs about various labor market outcomes (interview rates, job quits, job losses, job promotions) with those of persons without disabilities. We exploit new expectations survey data administered to both workers and job seekers in two Canadian provinces (Québec and New Brunswick). We estimate the determinants of subjective beliefs about each labor market outcome taking into account measurement error due to respondents rounding their probabilistic beliefs in the survey. We find that persons with disabilities are significantly more pessimistic about the odds of getting an interview request after applying for a job, and believe being significantly more likely to leave their jobs in the next 12 months when employed relative to persons without disabilities. On the other hand, we find that persons with disabilities are significantly more optimistic about finding a better job in the future, an indication of their dissatisfaction about their current jobs. Finally, we find that persons with disabilities round their probalistic statements more than persons without disabilities, possibly reflecting greater underlying uncertainty about labor market outcomes.</p>
+        </div>
+    </div>
+    <div class="paper">
+        <div class="paper-title">
+            Subjective expectations: textual analysis using semi-structured interviews.
+        </div>
+        <div class="expander" onclick="toggleAbstract('abstract2', this)">Show Abstract</div>
+        <div class="expander" onclick="window.open('path/to/paper2.pdf', '_blank')">Read Paper</div>
+        <div id="abstract2" class="abstract">
+            <p>Incoming.</p>
+        </div>
+    </div>
+    <div class="paper">
+        <div class="paper-title">
+            From Social Security Reliance to Permanent Jobs: The CIT pathway for Persons with Disabilities, <a href="https://www.fss.ulaval.ca/notre-faculte/repertoire-du-personnel/charles-bellemare" target="_blank">Charles Bellemare</a> and 
+            <a href="https://lucbissonnette.com/" target="_blank">Luc Bissonnette</a>.
+        </div>
+        <div class="expander" onclick="toggleAbstract('abstract3', this)">Show Abstract</div>
+        <div class="expander" onclick="window.open('path/to/paper3.pdf', '_blank')">Read Paper</div>
+        <div id="abstract3" class="abstract">
+            <p>Incoming...</p>
+        </div>
+    </div>
+</section>
+
+<section class="wip-section">
+    <h2>Work in Progress</h2>
+    <div class="paper">
+        <div class="paper-title">
+            Stereotype threat and gender difference in educational choices.
+        </div>
+        <div class="expander" onclick="toggleAbstract('abstract4', this)">Show Abstract</div>
+        <div class="expander" onclick="window.open('path/to/paper4.pdf', '_blank')">Read Paper</div>
+        <div id="abstract4" class="abstract">
+            <p>Incoming...</p>
+        </div>
+    </div>
+    <div class="paper">
+        <div class="paper-title">
+            The Role of Direct Taxation in Political Accountability - A Case Study on Senegal.
+        </div>
+        <div class="expander" onclick="toggleAbstract('abstract5', this)">Show Abstract</div>
+        <div class="expander" onclick="window.open('path/to/paper5.pdf', '_blank')">Read Paper</div>
+        <div id="abstract5" class="abstract">
+            <p>Incoming.</p>
+        </div>
+    </div>
+    <div class="paper">
+        <div class="paper-title">
+            Barça or Barsakh: Examining the Role of Survival Expectations in Risky Migration Behaviors Among Senegalese Youth.
+        </div>
+        <div class="expander" onclick="toggleAbstract('abstract6', this)">Show Abstract</div>
+        <div class="expander" onclick="window.open('path/to/paper6.pdf', '_blank')">Read Paper</div>
+        <div id="abstract6" class="abstract">
+            <p>Incoming...</p>
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <hr class="slender">
+        <div class="credits">
+            <a href="https://www.linkedin.com/in/camndiaye/" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://twitter.com/a__cheikh?t=rXLxHzlq6Om09NMF5Q2N9Q" target="_blank"><img src="icons/twitter.png" alt="Twitter" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://github.com/cheikh-a" target="_blank"><img src="icons/github.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://www.fss.ulaval.ca/economique/recherche/doctorants-stagiaires-postdoctoraux/cheikh-ahmadou-mbacke-ndiaye" target="_blank"><img src="icons/favicon.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleAbstract(id, element) {
+        var abstract = document.getElementById(id);
+        if (abstract.classList.contains('show')) {
+            abstract.classList.remove('show');
+            element.classList.remove('active');
+        } else {
+            abstract.classList.add('show');
+            element.classList.add('active');
+        }
+    }
+</script>
+</body>
+</html>
