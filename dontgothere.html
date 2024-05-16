@@ -148,14 +148,29 @@
         .description.show {
             display: block;
         }
+    /* Media query for mobile version */
+    @media (max-width: 768px) {
+        .group {
+            flex-direction: column;
+            align-items: center;
+            }
+        .group > div:first-child {
+            position: static;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            }
+        .group > div:last-child {
+            justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
- 
+
 <header>
-    <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
+        <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="font-weight: bold; font-size: 1.5em; color: #333;">CAMN</div>
         <div style="display: flex; gap: 20px;">
-        <div style="position: absolute; left: 20px; font-weight: bold; font-size: 1.5em; color: #333;">CAMN</div>
         <a href="index.html">About</a>
         <a href="research.html">Research</a>
         <a href="blog.html">Blog</a>
