@@ -17,11 +17,6 @@
     <meta property="og:image" content="assets/img/Me.jpg" />
     <meta property="twitter:image" content="assets/img/twitter.png" />
 
-    <!-- Twitter meta tags -->
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:site" content="@a__cheikh" />
-    <meta property="twitter:creator" content="@a__cheikh" />
-
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://yourdomain.com/css/fontello.css">
     <link rel="stylesheet" href="https://yourdomain.com/css/tufte.css">
@@ -31,6 +26,12 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="https://yourdomain.com/assets/img/favicon.ico">
+
+    <!-- Include React and ReactDOM from a CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <style>
         body {
@@ -150,40 +151,18 @@
 <body>
 
 <header>
-        <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
+    <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
         <div style="font-weight: bold; font-size: 1.5em; color: #333;">CAMN</div>
         <div style="display: flex; gap: 20px;">
-        <a class="active" href="index.html">About</a>
-        <a href="research.html">Research</a>
-        <a href="blog.html">Blog</a>
-        <a href="dontgothere.html">Don't go there...</a>
+            <a class="active" href="index.html">About</a>
+            <a href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <a href="dontgothere.html">Don't go there...</a>
+        </div>
     </nav>
 </header>
 
-<article class="group">
-    <h1>About</h1>
-    <p>I’m Cheikh Ahmadou Mbacké Ndiaye.</p>
-    <div class="profile-picture"></div>
-    <p>You can reach me at [candi12] at ulaval dot com.</p>
-    <p>Here is my <a href="CV_Cheikh.pdf" target="_blank">CV</a>.</p> <!-- Added CV link -->
-    
-    <h2 id="Work">Works</h2>
-    <ul>
-        <li>I specialize in partially identified models, applying them to economic issues such as labor market dynamics, including participation, transitions, and retirement. My approach often incorporates the analysis of subjective expectations data, both numerical and textual, focusing on identifying non-classical measurement errors such as rounding, bunching, and ambiguity.</li>
-        <li>I'm also interested in examining how heightened scrutiny towards politicians is driven by economic factors, such as loss aversion related to direct taxation and the sense of ownership. In my future research, I intend to focus on this agenda within the context of high economic informality, particularly in Senegal and other West African countries.</li>
-        <li>Other research interests include investigating how stereotype threats influence gender differences in educational choices and the timing of key events in women's educational trajectories in African countries. To achieve this, I use experimental tools for precise measurement.</li>
-    </ul>
-
-    <h2 id="faq">News and other updates</h2>
-    <li>Section to be filled soon...</li>
-
-    <h2 id="recommendations">Miscellaneous</h2>
-    <li>I try to only recommend things that I’ve watched/read at least twice. For more, check out my <a href="dontgothere.html">playlist and recommendations</a> page.</li>
-    <li>For some opinions and other writings, visit this <a href="blog.html">blogpost</a> page.</li> <!-- Added link to "Don't go there" page -->
-   <!--  <p>Fiction: I like <em>The Idiot</em>, <em>The Savage Detectives</em> and <em>The Brothers Karamazov</em>.</p>
-    <p>Nonfiction: I won't torture you (but wait: <em>L'Âme de Billie Holiday</em> and <em>Worldly Philosophers</em>).</p>
-    <p>Movies: I like every <em>Tarantino</em>, <em>No Country for Old Men</em> and <em>High Fidelity</em>. I also entertain a certain passion for Scorsese filmography.</p>-->
-</article>
+<div id="about-root"></div>
 
 <footer class="footer">
     <div class="container">
@@ -197,13 +176,50 @@
     </div>
 </footer>
 
+<script type="text/babel">
+  class About extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        works: [
+          "I specialize in partially identified models...",
+          "I'm also interested in examining how heightened scrutiny...",
+          "Other research interests include investigating how stereotype threats..."
+        ],
+        news: "Section to be filled soon..."
+      };
+    }
+
+    render() {
+      return (
+        <div>
+          <h1>About</h1>
+          <p>I’m Cheikh Ahmadou Mbacké Ndiaye.</p>
+          <div className="profile-picture" style={{backgroundImage: "url('assets/img/Me.jpg')"}}></div>
+          <p>You can reach me at [candi12] at ulaval dot com.</p>
+          <p>Here is my <a href="CV_Cheikh.pdf" target="_blank">CV</a>.</p>
+          
+          <h2 id="Work">Works</h2>
+          <ul>
+            {this.state.works.map((work, index) => (
+              <li key={index}>{work}</li>
+            ))}
+          </ul>
+
+          <h2 id="faq">News and other updates</h2>
+          <li>{this.state.news}</li>
+
+          <h2 id="recommendations">Miscellaneous</h2>
+          <li>I try to only recommend things that I’ve watched/read at least twice. For more, check out my <a href="dontgothere.html">playlist and recommendations</a> page.</li>
+          <li>For some opinions and other writings, visit this <a href="blog.html">blogpost</a> page.</li>
+        </div>
+      );
+    }
+  }
+
+  ReactDOM.render(<About />, document.getElementById('about-root'));
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<!-- Rebuild GitHub Pages -->
-<!-- Rebuild GitHub Pages -->
-<!-- Force rebuild -->
-<!-- Force rebuild -->
-<!-- Force rebuild -->
-<!-- Force rebuild -->
-<!-- Rebuild GitHub Pages -->
