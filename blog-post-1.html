@@ -16,20 +16,26 @@
     <meta property="twitter:image" content="assets/img/twitter.png" />
 
 
-     <!-- Twitter meta tags -->
-     <meta property="twitter:card" content="summary" />
-     <meta property="twitter:site" content="@a__cheikh" />
-     <meta property="twitter:creator" content="@a__cheikh" />
+    <!-- Twitter meta tags -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="@a__cheikh" />
+    <meta property="twitter:creator" content="@a__cheikh" />
  
-     <!-- Stylesheets -->
-     <link rel="stylesheet" href="https://yourdomain.com/css/fontello.css">
-     <link rel="stylesheet" href="https://yourdomain.com/css/tufte.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://yourdomain.com/css/fontello.css">
+    <link rel="stylesheet" href="https://yourdomain.com/css/tufte.css">
  
-     <!-- Canonical link -->
-     <link rel="canonical" href="https://yourdomain.com/blog-post-1/">
+    <!-- Canonical link -->
+    <link rel="canonical" href="https://yourdomain.com/blog-post-1/">
  
-     <!-- Favicon -->
-     <link rel="shortcut icon" href="https://yourdomain.com/assets/img/favicon.ico">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://yourdomain.com/assets/img/favicon.ico">
+
+    <!-- Include React and ReactDOM from a CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <style>
         body {
@@ -62,13 +68,6 @@
 
         nav.group a.active {
             border-bottom: 2px solid #333;
-        }
-
-        .footer {
-            padding: 20px 0;
-            text-align: center;
-            border-top: 1px solid #e5e5e5;
-            background-color: #f7f5f5;
         }
 
         .footer {
@@ -157,30 +156,18 @@
 <body>
 
 <header>
-        <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
+    <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
         <div style="font-weight: bold; font-size: 1.5em; color: #333;">CAMN</div>
         <div style="display: flex; gap: 20px;">
             <a href="index.html">About</a>
             <a href="research.html">Research</a>
             <a class="active" href="blog.html">Blog</a>
             <a href="dontgothere.html">Don't go there...</a>
-        </nav>
-    </header>
-
-<section class="blog-post">
-    <div class="post-content">
-        <div class="post-title">Ericson and Laibson (2018)</div>
-        <div class="post-body">
-            <p>This paper (<a href="https://scholar.harvard.edu/laibson/publications/intertemporal-choice-0" target="_blank">Ericson and Laibson, 2018</a>) reviews most of the works done on intertemporal choices. It highlights the differences between present-biased (best illustrated by La Fontaine’s « Un tiens vaut mieux que deux tu l’auras » – A bird in hand is worth two in the bush) and present-focused preferences.</p>
-
-            <p>The models of present-focused preferences are categorized by two properties: (no) commitment and dynamically (in)consistent preferences. They range from unitary-self temptations models to myopia. This alignment allowed the authors to show that present-focused preferences are a general case of present-biased preferences. They proceed by presenting the subtle mechanisms behind different models with stylized facts (which they call empirical regularities) with open questions to extrapolate on the potential research.</p>
-
-            <p>Few examples of these models with empirical regularities and open questions: preferences over monetary receipt timing, preferences over consumption timing, procrastination, naiveté, etc. Moreover, they explore some puzzles without associated stylized facts, such as: the way value declines over time, the role of temptation, the malleability and self-management, etc.</p>
-
-            <p>This paper is near exhaustive and lays the base for future research questions and the important distinctions to be done among various present-focused models. A must-read.</p>
         </div>
-    </div>
-</section>
+    </nav>
+</header>
+
+<div id="post1-root"></div>
 
 <footer class="footer">
     <div class="container">
@@ -194,9 +181,28 @@
     </div>
 </footer>
 
+<script type="text/babel">
+  class BlogPost1 extends React.Component {
+    render() {
+      return (
+        <div className="blog-post">
+          <div className="post-content">
+            <div className="post-title">Ericson and Laibson (2018)</div>
+            <div className="post-body">
+              <p>This paper (<a href="https://scholar.harvard.edu/laibson/publications/intertemporal-choice-0" target="_blank">Ericson and Laibson, 2018</a>) reviews most of the works done on intertemporal choices. It highlights the differences between present-biased (best illustrated by La Fontaine’s « Un tiens vaut mieux que deux tu l’auras » – A bird in hand is worth two in the bush) and present-focused preferences.</p>
+              <p>The models of present-focused preferences are categorized by two properties: (no) commitment and dynamically (in)consistent preferences. They range from unitary-self temptations models to myopia. This alignment allowed the authors to show that present-focused preferences are a general case of present-biased preferences. They proceed by presenting the subtle mechanisms behind different models with stylized facts (which they call empirical regularities) with open questions to extrapolate on the potential research.</p>
+              <p>Few examples of these models with empirical regularities and open questions: preferences over monetary receipt timing, preferences over consumption timing, procrastination, naiveté, etc. Moreover, they explore some puzzles without associated stylized facts, such as: the way value declines over time, the role of temptation, the malleability and self-management, etc.</p>
+              <p>This paper is near exhaustive and lays the base for future research questions and the important distinctions to be done among various present-focused models. A must-read.</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  ReactDOM.render(<BlogPost1 />, document.getElementById('post1-root'));
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<!-- Rebuild GitHub Pages -->
-<!-- Rebuild GitHub Pages -->
-<!-- Rebuild GitHub Pages -->
