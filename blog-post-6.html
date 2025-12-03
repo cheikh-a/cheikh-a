@@ -137,6 +137,11 @@
             margin: 10px 0;
             padding: 0 10px;
         }
+        .post-body h3.subsection{
+            font-weight:700;
+            font-size:1.15rem;   /* tweak as you like */
+            margin:1.2em 0 .4em;
+        }
         /* Mobile nav fix */
         @media (max-width: 768px) {
             .group {
@@ -288,6 +293,17 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('.post-body p').forEach(p=>{
+      const m = p.textContent.match(/^###\s+(.*)/);
+      if (m) {
+        const h3 = document.createElement('h3');
+        h3.className = 'subsection';
+        h3.textContent = m[1];
+        p.replaceWith(h3);
+      }
+    });
+    </script>    
 
 </body>
 </html>
