@@ -8,25 +8,29 @@
     <meta name="description" content="Before November 8, After November 8: How Sonko Turned a Rally into a Political Mechanism">
 
     <!-- Open Graph / Twitter -->
-    <meta property="og:title" content="Before November 8, After November 8: How Sonko Turned a Rally into a Political Mechanism" />
-    <meta property="og:description" content="A game-theoretic read of November 8 in Senegal: screening, belief updating, and elite signalling." />
-    <meta property="og:url" content="https://cheikh-a.github.io/cheikh-a/blog-post-6.html" />
+      <!-- Open Graph meta tags for better social media integration -->
+    <meta property="og:title" content="Blog Post 6" />
+    <meta property="og:description" content="Cheikh Ahmadou Mbacké Ndiaye's blog post" />
+    <meta property="og:url" content="https://github.com/cheikh-a/cheikh-a/blog-post-6" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="assets/img/Me.jpg" />
-    <meta property="twitter:card" content="summary" />
     <meta property="twitter:image" content="assets/img/twitter.png" />
+
+    <!-- Twitter meta tags -->
+    <meta property="twitter:card" content="summary" />
     <meta property="twitter:site" content="@a__cheikh" />
     <meta property="twitter:creator" content="@a__cheikh" />
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://github.com/cheikh-a/css/fontello.css">
+    <link rel="stylesheet" href="https://github.com/cheikh-a/css/tufte.css">
 
-    <!-- Site CSS (use your repo paths) -->
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" href="css/tufte.css">
+    <!-- Canonical link -->
+    <link rel="canonical" href="https://github.com/cheikh-a/cheikh-a/blog-post-5">
 
-    <link rel="canonical" href="https://cheikh-a.github.io/cheikh-a/blog-post-6.html">
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://github.com/cheikh-a/assets/img/favicon.ico">
+
 
     <style>
         body {
@@ -36,8 +40,6 @@
             padding: 0;
             background-color: #f7f5f5;
         }
-        a { color: #8B4513; text-decoration: none; }
-        a:hover { text-decoration: underline; }
 
         header {
             background-color: #f7f5f5;
@@ -45,62 +47,128 @@
             padding: 10px 0;
             text-align: center;
         }
-        nav.group {
-            display: flex; justify-content: center; gap: 20px; position: relative; align-items: center;
-        }
-        /* CAMN brand left, links centered */
-        .brand-left {
-            position: absolute; left: 20px; font-weight: bold; font-size: 1.5em; color: #333; pointer-events: none;
-        }
-        .nav-links { display: flex; gap: 20px; }
-        nav.group a { color: #333; font-weight: bold; font-size: 1.1em; }
-        nav.group a.active { border-bottom: 2px solid #333; }
 
-        .blog-post {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 40px 20px; text-align: justify;
+        nav.group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
-        .post-content {
-            width: 100%; max-width: 800px; margin-bottom: 30px; padding: 24px;
-            border: 1px solid #e5e5e5; border-radius: 8px; background-color: #f7f5f5;
+
+        nav.group a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2em;
         }
-        .post-title {
-            font-size: 1.6rem; font-weight: 700; color: #333; margin-bottom: 8px;
+
+        nav.group a.active {
+            border-bottom: 2px solid #333;
         }
-        .post-subtitle {
-            font-size: 1.05rem; color: #555; margin-bottom: 18px;
-        }
-        .post-body { font-size: 1.06rem; line-height: 1.7; color: #333; }
-        .post-body h3 {
-            font-size: 1.15rem; margin: 22px 0 10px; color: #222;
-        }
-        .post-body em { font-style: italic; }
-        .post-body strong { font-weight: 700; }
 
         .footer {
-            padding: 20px 0; text-align: center; border-top: 1px solid #e5e5e5; background-color: #f7f5f5;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #e5e5e5;
+            background-color: #f7f5f5;
         }
 
-        /* Mobile */
-        @media (max-width: 768px) {
-            .brand-left { position: static; margin-bottom: 8px; }
-            nav.group { flex-direction: column; }
+        .footer .icon-github-squared,
+        .footer .icon-twitter-squared {
+            color: black;
+            font-size: x-large;
+            margin: 0 10px;
+        }
+
+        .footer a {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .blog-post {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: justify;
+        }
+
+        .blog-post h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .post-content {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            background-color: #f7f5f5;
+        }
+
+        .post-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .post-body {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        a {
+            color: #8B4513; /* Light brown color */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .centered-quote {
+            display: block;
+            text-align: justify;
+            font-style: italic;
+            font-size: 0.9em;
+            margin: 10px 0;
+            padding: 0 10px;
+        }
+    /* Media query for mobile version */
+    @media (max-width: 768px) {
+        .group {
+            flex-direction: column;
+            align-items: center;
+            }
+        .group > div:first-child {
+            position: static;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            }
+        .group > div:last-child {
+            justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <nav class="group">
-        <div class="brand-left">CAMN</div>
-        <div class="nav-links">
+        <nav class="group" style="display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="font-weight: bold; font-size: 1.5em; color: #333;">CAMN</div>
+        <div style="display: flex; gap: 20px;">
             <a href="index.html">About</a>
             <a href="research.html">Research</a>
             <a class="active" href="blog.html">Blog</a>
             <a href="dontgothere.html">Don't go there...</a>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
+
 
 <section class="blog-post">
     <div class="post-content">
@@ -134,13 +202,17 @@
         <hr class="slender">
         <div class="credits">
             <a href="https://www.linkedin.com/in/camndiaye/" target="_blank"><img src="assets/img/linkedin.png" alt="LinkedIn" style="width: 40px; margin-right: 15px;"></a>
-            <a href="https://twitter.com/a__cheikh" target="_blank"><img src="assets/img/twitter.png" alt="Twitter" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://twitter.com/a__cheikh?t=rXLxHzlq6Om09NMF5Q2N9Q" target="_blank"><img src="assets/img/twitter.png" alt="Twitter" style="width: 40px; margin-right: 15px;"></a>
             <a href="https://github.com/cheikh-a" target="_blank"><img src="assets/img/github.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
-            <a href="https://www.fss.ulaval.ca/economique/recherche/doctorants-stagiaires-postdoctoraux/cheikh-ahmadou-mbacke-ndiaye" target="_blank"><img src="assets/img/favicon.png" alt="Site" style="width: 40px; margin-right: 15px;"></a>
+            <a href="https://www.fss.ulaval.ca/economique/recherche/doctorants-stagiaires-postdoctoraux/cheikh-ahmadou-mbacke-ndiaye" target="_blank"><img src="assets/img/favicon.png" alt="GitHub" style="width: 40px; margin-right: 15px;"></a>
         </div>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
+<!-- Rebuild GitHub Pages -->
+<!-- Rebuild GitHub Pages -->
+<!-- Rebuild GitHub Pages -->
