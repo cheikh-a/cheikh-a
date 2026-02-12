@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import {
   AreaChart, Area, LineChart, Line, BarChart, Bar, XAxis, YAxis,
   Tooltip, Legend, ResponsiveContainer, CartesianGrid, ReferenceLine,
@@ -795,6 +795,13 @@ function ScenarioExplorer({TC:_TC}){
 /* ============================================================
    IntraPartyArticle: Full article with KaTeX math
    ============================================================ */
+class IPGErrorBoundary extends React.Component{
+  constructor(p){super(p);this.state={err:false}}
+  static getDerivedStateFromError(){return{err:true}}
+  render(){return this.state.err?React.createElement("div",{style:{padding:40,textAlign:"center",fontFamily:"monospace",color:"#999"}},
+    "Article could not load. Try on desktop or refresh."):this.props.children}
+}
+
 function IntraPartyArticle({TC:_TC}){
   const TC=_TC||C;
   const[mode,setMode]=useState("general");
@@ -802,11 +809,13 @@ function IntraPartyArticle({TC:_TC}){
   const sectionRefs=useRef({});
 
   useEffect(()=>{
-    const obs=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{if(e.isIntersecting)setActiveSection(e.target.id)});
-    },{rootMargin:"-20% 0px -60% 0px",threshold:0});
-    Object.values(sectionRefs.current).forEach(el=>{if(el)obs.observe(el)});
-    return()=>obs.disconnect();
+    try{
+      const obs=new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{if(e.isIntersecting)setActiveSection(e.target.id)});
+      },{rootMargin:"-20% 0px -60% 0px",threshold:0});
+      Object.values(sectionRefs.current).forEach(el=>{if(el)obs.observe(el)});
+      return()=>obs.disconnect();
+    }catch(e){}
   },[]);
 
   const regRef=(id)=>(el)=>{sectionRefs.current[id]=el};
@@ -1725,7 +1734,7 @@ export default function App(){
     }catch(e){}
   },[]);
   const TC=dark?DARK_T:LIGHT_T;
-  const nav=(p,s)=>{try{window.location.hash=s?`/${p}/${s}`:`/${p}`}catch(e){setPage(p);setArticleSlug(s||null);window.scrollTo(0,0)}};
+  const nav=(p,s)=>{setPage(p);setArticleSlug(s||null);window.scrollTo(0,0);try{window.location.hash=s?`/${p}/${s}`:`/${p}`}catch(e){}};
   const article=articleSlug?ARTICLES.find(a=>a.slug===articleSlug):null;
   const[isMobile,setIsMobile]=useState(()=>typeof window!=="undefined"&&window.innerWidth<600);
   useEffect(()=>{const h=()=>setIsMobile(window.innerWidth<600);window.addEventListener("resize",h);return()=>window.removeEventListener("resize",h)},[]);
@@ -1868,7 +1877,7 @@ button:hover{filter:brightness(1.08)}
           <div style={{display:"flex",gap:16,fontSize:10,fontFamily:C.fm,color:TC.ink3,marginBottom:28}}>
             <span>{fmtDate(article.date,article.lang)}</span><span>{article.rt+" min"}</span>
             <span style={{color:TC[catColor[article.cat]]}}>English</span></div>
-          <IntraPartyArticle TC={TC}/>
+          <IPGErrorBoundary><IntraPartyArticle TC={TC}/></IPGErrorBoundary>
           <SiteComments TC={TC}/>
         </FadeIn>
       ):article.isVIH?(
