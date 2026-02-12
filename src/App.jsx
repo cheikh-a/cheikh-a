@@ -1723,7 +1723,9 @@ export default function App(){
   const TC=dark?DARK_T:LIGHT_T;
   const nav=(p,s)=>{window.location.hash=s?`/${p}/${s}`:`/${p}`};
   const article=articleSlug?ARTICLES.find(a=>a.slug===articleSlug):null;
-  const navItems=[{id:"about",label:"About"},{id:"research",label:"Research"},{id:"fulgurances",label:"Fulgurances"},{id:"dontgothere",label:"Don’t go there..."}];
+  const[isMobile,setIsMobile]=useState(()=>typeof window!=="undefined"&&window.innerWidth<600);
+  useEffect(()=>{const h=()=>setIsMobile(window.innerWidth<600);window.addEventListener("resize",h);return()=>window.removeEventListener("resize",h)},[]);
+  const navItems=[{id:"about",label:"About"},{id:"research",label:"Research"},{id:"fulgurances",label:"Fulgurances"},{id:"dontgothere",label:"Don’t go there...",short:"Vibes"}];
   const fmtDate=(d,lang)=>{const dt=new Date(d);const MF=["jan.","fév.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];const ME=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];const M=lang==="fr"?MF:ME;return dt.getDate()+" "+M[dt.getMonth()]+" "+dt.getFullYear()};
   const renderBody=(body,lang)=>body.map((p,i)=>{
     if(p.startsWith("###"))return <h3 key={i} style={{fontFamily:C.fd,fontSize:18,fontWeight:700,color:TC.ink,margin:"28px 0 12px",lineHeight:1.3}}>{p.slice(3)}</h3>;
@@ -1751,7 +1753,7 @@ button:hover{filter:brightness(1.08)}
             border:"1px solid "+(page===n.id?TC.coral+"33":"transparent"),
             color:page===n.id?TC.coral:TC.ink3,padding:"5px 12px",borderRadius:4,
             fontSize:10.5,fontFamily:C.fm,cursor:"pointer",transition:"all .2s",
-            fontWeight:page===n.id?600:400,letterSpacing:.5}}>{n.label}</button>))}
+            fontWeight:page===n.id?600:400,letterSpacing:.5,whiteSpace:"nowrap"}}>{isMobile&&n.short?n.short:n.label}</button>))}
           <button onClick={()=>setDark(!dark)} style={{background:dark?"#fff2":"#0001",border:"1px solid "+TC.brd,borderRadius:20,padding:"4px 10px",cursor:"pointer",fontSize:14,marginLeft:6,lineHeight:1,transition:"all .3s"}} title={dark?"Mode jour":"Mode nuit"}>
             {dark?"☀️":"🌙"}</button>
         </div>
