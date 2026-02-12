@@ -795,6 +795,19 @@ function ScenarioExplorer({TC:_TC}){
 /* ============================================================
    IntraPartyArticle: Full article with KaTeX math
    ============================================================ */
+function LazyViz({children,label}){
+  const[show,setShow]=useState(false);
+  const ref=useRef(null);
+  useEffect(()=>{
+    try{
+      const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){setShow(true);obs.disconnect()}},{rootMargin:"200px"});
+      if(ref.current)obs.observe(ref.current);
+      return()=>obs.disconnect();
+    }catch(e){setShow(true)}
+  },[]);
+  return <div ref={ref}>{show?children:<div style={{background:"#F2DFCE",border:"1px solid rgba(51,48,46,0.12)",borderRadius:6,padding:"40px 20px",textAlign:"center",fontFamily:"JetBrains Mono",fontSize:11,color:"#86807A"}}>{label||"Loading visualization..."}</div>}</div>;
+}
+
 class IPGErrorBoundary extends React.Component{
   constructor(p){super(p);this.state={err:false}}
   static getDerivedStateFromError(){return{err:true}}
@@ -877,9 +890,9 @@ function IntraPartyArticle({TC:_TC}){
   };
 
   return(
-  <div style={{display:"flex",gap:32,position:"relative"}}>
-    {/* LEFT TOC */}
-    <div className="ipg-toc-sidebar" style={{position:"sticky",top:70,alignSelf:"flex-start",width:180,minWidth:150,flexShrink:0}}>
+  <div style={{position:"relative"}}>
+    {/* LEFT TOC - desktop only */}
+    <div className="ipg-toc-sidebar" style={{position:"fixed",top:70,left:"max(0px, calc(50% - 580px))",width:160}}>
       <nav style={{borderRight:"1px solid "+TC.brd,paddingRight:16}}>
         <div style={sty.label}>CONTENTS</div>
         {sections.map(s=>(
@@ -893,7 +906,8 @@ function IntraPartyArticle({TC:_TC}){
     </div>
 
     {/* MAIN CONTENT */}
-    <div style={{flex:1,maxWidth:680,minWidth:0}}>
+    <div style={{maxWidth:680,minWidth:0}}>
+      <div style={{background:"#FFE0D0",padding:8,borderRadius:4,marginBottom:12,fontSize:11,fontFamily:"monospace"}}>IPG Article Loaded</div>
 
       {/* MODE TOGGLE */}
       <div style={{display:"flex",gap:4,marginBottom:28}}>
@@ -925,7 +939,7 @@ function IntraPartyArticle({TC:_TC}){
         <TexBlock tex="x = a + \varepsilon_m, \quad \varepsilon_m \sim \mathcal{N}(0, \sigma_m^2)" TC={TC}/>
         <p style={sty.p}>where <Tex tex="\sigma_H \lt  \sigma_N"/>, meaning the signal is more informative under the high-salience regime <Tex tex="H"/>.</p>
 
-        <GameTreeViz TC={TC}/>
+        <LazyViz label="Game tree"><GameTreeViz TC={TC}/></LazyViz>
 
         <h3 style={sty.h3}>Payoffs</h3>
         <p style={sty.p}>Militants receive a positive payoff <Tex tex="R_M"/> when they support a loyal successor, a negative payoff <Tex tex="-S_M"/> when they support an autonomist, a negative payoff <Tex tex="-C_M"/> when they withdraw support from a loyal successor, and a normalized payoff of 0 when they correctly withdraw from an autonomist. The parameters <Tex tex="R_M, S_M, C_M \gt  0"/>.</p>
@@ -1014,14 +1028,14 @@ function IntraPartyArticle({TC:_TC}){
       <section id="interactive" ref={regRef("interactive")}>
         <h2 style={sty.h2}>Interactive: Posterior Curve and Faction Cutoffs</h2>
         <p style={sty.p}>The plot below shows the posterior belief <Tex tex="\mu(x)"/> as a function of the observed signal <Tex tex="x"/>, along with the faction cutoffs <Tex tex="x_B^*"/> and <Tex tex="x_E^*"/>. Use the sliders to adjust the prior probability <Tex tex="\pi"/> and the noise parameter <Tex tex="\sigma"/>. Observe how the cutoffs shift and how the gap between base and cadre thresholds widens or narrows.</p>
-        <PosteriorPlot TC={TC}/>
+        <LazyViz label="Posterior plot"><PosteriorPlot TC={TC}/></LazyViz>
       </section>
 
       {/* ===== MONTE CARLO ===== */}
       <section id="montecarlo" ref={regRef("montecarlo")}>
         <h2 style={sty.h2}>Monte Carlo Simulation</h2>
         <p style={sty.p}>The panel below runs 1000 simulated draws of the game per click. Each run draws a type (<Tex tex="L"/> or <Tex tex="A"/> with probability <Tex tex="\pi"/>), draws a signal <Tex tex="x"/> conditional on the separating profile, and computes each faction's support decision. The histogram shows the distribution of observed signals. The bar chart shows the frequency of each support outcome (both support, only cadres support, neither supports).</p>
-        <MonteCarloPanel TC={TC}/>
+        <LazyViz label="Monte Carlo panel"><MonteCarloPanel TC={TC}/></LazyViz>
       </section>
 
       {/* ===== SENEGAL MOTIVATION ===== */}
@@ -1040,7 +1054,7 @@ function IntraPartyArticle({TC:_TC}){
       <section id="scenarios" ref={regRef("scenarios")}>
         <h2 style={sty.h2}>Scenario Explorer: 2027 and 2029</h2>
         <p style={{...sty.p,fontStyle:"italic",color:TC.ink3}}>The following scenarios are conditional model implications, not predictions. They describe what the model would imply if specific observable conditions were to obtain. The parameters used in the simulator above can be adjusted to explore each scenario numerically.</p>
-        <ScenarioExplorer TC={TC}/>
+        <LazyViz label="Scenario explorer"><ScenarioExplorer TC={TC}/></LazyViz>
       </section>
 
       {/* ===== CONCLUSION ===== */}
@@ -1747,7 +1761,8 @@ export default function App(){
 
   return(
   <div style={{background:TC.bg,color:TC.ink,minHeight:"100vh",fontFamily:C.fl,transition:"background .4s, color .4s"}}>
-    <style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Libre+Franklin:wght@400;600&display=swap');
+    <style>{`@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Libre+Franklin:wght@400;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 ::selection{background:${dark?"#FF826644":"#FF6B4A33"}}
 button:hover{filter:brightness(1.08)}
