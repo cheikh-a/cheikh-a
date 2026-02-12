@@ -1705,10 +1705,23 @@ const WIPP=[
 /* MAIN APP */
 export default function App(){
   const[dark,setDark]=useState(false);
-  const[page,setPage]=useState("about");
-  const[articleSlug,setArticleSlug]=useState(null);
+  /* Hash routing: #/about, #/research, #/fulgurances, #/fulgurances/slug, #/dontgothere */
+  const parseHash=()=>{
+    const h=(window.location.hash||"#/about").replace(/^#\/?/,"");
+    const parts=h.split("/").filter(Boolean);
+    const pg=parts[0]||"about";
+    const sl=pg==="fulgurances"&&parts[1]?parts[1]:null;
+    return{pg,sl};
+  };
+  const[page,setPage]=useState(()=>parseHash().pg);
+  const[articleSlug,setArticleSlug]=useState(()=>parseHash().sl);
+  useEffect(()=>{
+    const onHash=()=>{const{pg,sl}=parseHash();setPage(pg);setArticleSlug(sl);window.scrollTo(0,0)};
+    window.addEventListener("hashchange",onHash);
+    return()=>window.removeEventListener("hashchange",onHash);
+  },[]);
   const TC=dark?DARK_T:LIGHT_T;
-  const nav=(p,s)=>{setPage(p);setArticleSlug(s||null);window.scrollTo(0,0)};
+  const nav=(p,s)=>{window.location.hash=s?`/${p}/${s}`:`/${p}`};
   const article=articleSlug?ARTICLES.find(a=>a.slug===articleSlug):null;
   const navItems=[{id:"about",label:"About"},{id:"research",label:"Research"},{id:"fulgurances",label:"Fulgurances"},{id:"dontgothere",label:"Don’t go there..."}];
   const fmtDate=(d,lang)=>{const dt=new Date(d);const MF=["jan.","fév.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];const ME=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];const M=lang==="fr"?MF:ME;return dt.getDate()+" "+M[dt.getMonth()]+" "+dt.getFullYear()};
