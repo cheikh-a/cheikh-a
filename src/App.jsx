@@ -1707,21 +1707,25 @@ export default function App(){
   const[dark,setDark]=useState(false);
   /* Hash routing: #/about, #/research, #/fulgurances, #/fulgurances/slug, #/dontgothere */
   const parseHash=()=>{
-    const h=(window.location.hash||"#/about").replace(/^#\/?/,"");
-    const parts=h.split("/").filter(Boolean);
-    const pg=parts[0]||"about";
-    const sl=pg==="fulgurances"&&parts[1]?parts[1]:null;
-    return{pg,sl};
+    try{
+      const h=(window.location.hash||"#/about").replace(/^#\/?/,"");
+      const parts=h.split("/").filter(Boolean);
+      const pg=parts[0]||"about";
+      const sl=pg==="fulgurances"&&parts[1]?parts[1]:null;
+      return{pg,sl};
+    }catch(e){return{pg:"about",sl:null}}
   };
   const[page,setPage]=useState(()=>parseHash().pg);
   const[articleSlug,setArticleSlug]=useState(()=>parseHash().sl);
   useEffect(()=>{
-    const onHash=()=>{const{pg,sl}=parseHash();setPage(pg);setArticleSlug(sl);window.scrollTo(0,0)};
-    window.addEventListener("hashchange",onHash);
-    return()=>window.removeEventListener("hashchange",onHash);
+    try{
+      const onHash=()=>{const{pg,sl}=parseHash();setPage(pg);setArticleSlug(sl);window.scrollTo(0,0)};
+      window.addEventListener("hashchange",onHash);
+      return()=>window.removeEventListener("hashchange",onHash);
+    }catch(e){}
   },[]);
   const TC=dark?DARK_T:LIGHT_T;
-  const nav=(p,s)=>{window.location.hash=s?`/${p}/${s}`:`/${p}`};
+  const nav=(p,s)=>{try{window.location.hash=s?`/${p}/${s}`:`/${p}`}catch(e){setPage(p);setArticleSlug(s||null);window.scrollTo(0,0)}};
   const article=articleSlug?ARTICLES.find(a=>a.slug===articleSlug):null;
   const[isMobile,setIsMobile]=useState(()=>typeof window!=="undefined"&&window.innerWidth<600);
   useEffect(()=>{const h=()=>setIsMobile(window.innerWidth<600);window.addEventListener("resize",h);return()=>window.removeEventListener("resize",h)},[]);
