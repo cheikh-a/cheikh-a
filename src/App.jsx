@@ -877,9 +877,9 @@ function IntraPartyArticle({TC:_TC}){
   };
 
   return(
-  <div style={{display:"flex",gap:32,position:"relative"}}>
+  <div style={{position:"relative",overflowX:"hidden"}}>
     {/* LEFT TOC */}
-    <div className="ipg-toc-sidebar" style={{position:"sticky",top:70,alignSelf:"flex-start",width:180,minWidth:150,flexShrink:0}}>
+    <div className="ipg-toc-sidebar" style={{position:"fixed",top:80,left:"max(16px, calc(50% - 560px))",width:150,zIndex:10}}>
       <nav style={{borderRight:"1px solid "+TC.brd,paddingRight:16}}>
         <div style={sty.label}>CONTENTS</div>
         {sections.map(s=>(
@@ -893,7 +893,7 @@ function IntraPartyArticle({TC:_TC}){
     </div>
 
     {/* MAIN CONTENT */}
-    <div style={{flex:1,maxWidth:680,minWidth:0}}>
+    <div style={{maxWidth:680,width:"100%"}}>
 
       {/* MODE TOGGLE */}
       <div style={{display:"flex",gap:4,marginBottom:28}}>
@@ -1747,7 +1747,8 @@ export default function App(){
 
   return(
   <div style={{background:TC.bg,color:TC.ink,minHeight:"100vh",fontFamily:C.fl,transition:"background .4s, color .4s"}}>
-    <style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Libre+Franklin:wght@400;600&display=swap');
+    <style>{`@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Libre+Franklin:wght@400;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 ::selection{background:${dark?"#FF826644":"#FF6B4A33"}}
 button:hover{filter:brightness(1.08)}
