@@ -862,11 +862,10 @@ function IntraPartyArticle({TC:_TC}){
 
       {/* ===== INTRODUCTION ===== */}
       <section id="intro">
-        <h2 style={sty.h2}>Introduction</h2>
         <p style={sty.p}>Many political movements that achieve power through mass mobilization face a specific structural problem after the transition: the separation between the leader who built the movement and the successor who holds formal office. The successor may continue the original program, or may use the accumulated symbolic capital to build an independent political machine. The founder typically has superior private information about the successor's trajectory, but faces a credibility problem: direct accusations appear self-interested, and exit from government risks ceding state capacity to the successor.</p>
-        <p style={sty.p}>This paper proposes a formal framework for studying that problem. The central mechanism is a <em>clarification protocol</em>: a public action by the founder that does not simply "send a message" but instead changes the informational environment. Specifically, it increases the diagnostic content of subsequent observable actions (appointments, alliances, legislative choices) and raises the attribution cost of deviation from the founding program.</p>
+        <p style={sty.p}>This article proposes a formal framework for studying that problem. The central mechanism is a <em>clarification protocol</em>: a public action by the founder that does not simply "send a message" but instead changes the informational environment. Specifically, it increases the diagnostic content of subsequent observable actions (appointments, alliances, legislative choices) and raises the attribution cost of deviation from the founding program.</p>
         <p style={sty.p}>The motivating episode is Senegal in late 2025. On November 8, 2025, Prime Minister Ousmane Sonko held a large public rally that was publicly framed as creating a "before and after" moment.<Cite ids={[1]}/> On November 28, 2025, he appeared before the National Assembly during questions to the government, making statements that can be interpreted as reinforcing the accountability framework established on November 8.<Cite ids={[2,3]}/> In a widely reported statement, Sonko said: "I do not work for Bassirou Diomaye Faye, but for Senegal, under Diomaye."<Cite ids={[4]}/></p>
-        <p style={sty.p}>This paper does not claim to observe anyone's private intentions. It uses the Senegalese episode as motivation for a generic strategic problem in intra-party politics. Every political claim about Senegal in this text is either directly sourced or explicitly labeled as model interpretation.</p>
+        <p style={sty.p}>This article does not claim to observe anyone's private intentions. It uses the Senegalese episode as motivation for a generic strategic problem in intra-party politics. Every political claim about Senegal in this text is either directly sourced or explicitly labeled as model interpretation.</p>
       </section>
 
       {/* ===== BASELINE GAME ===== */}
@@ -997,8 +996,7 @@ function IntraPartyArticle({TC:_TC}){
 
       {/* ===== CONCLUSION ===== */}
       <section id="conclusion">
-        <h2 style={sty.h2}>Conclusion</h2>
-        <p style={sty.p}>This paper proposed a framework for clarification in intra-party leadership games. When an informed founder cannot credibly exit and cannot directly accuse a successor without appearing self-interested, the founder may still be able to activate a public protocol that changes the informational environment and accountability structure. The protocol makes subsequent alliance and appointment choices more diagnostic and deviations more publicly attributable.</p>
+        <p style={sty.p}>This article proposed a framework for clarification in intra-party leadership games. When an informed founder cannot credibly exit and cannot directly accuse a successor without appearing self-interested, the founder may still be able to activate a public protocol that changes the informational environment and accountability structure. The protocol makes subsequent alliance and appointment choices more diagnostic and deviations more publicly attributable.</p>
         <p style={sty.p}>The baseline model yields posterior-threshold behavior and identifies the conditions under which triggering a clarification protocol is attractive for the founder. The extension with heterogeneous factions delivers cutoff strategies with the base stricter than cadres, implying earlier support loss among the base when the successor pursues an autonomist line.</p>
         <p style={sty.p}>Natural extensions include a continuous type space for the successor, endogenous timing of the clarification protocol as information accumulates, and repeated clarification protocols over longer leadership conflicts.</p>
       </section>
@@ -1516,16 +1514,16 @@ function FLogo({size=48,TC}){
   </svg>)}
 
 const IPG_SECTIONS=[
-  {id:"intro",label:"Introduction"},{id:"baseline",label:"Baseline Game"},
+  {id:"baseline",label:"Baseline Game"},
   {id:"posteriors",label:"Posteriors and Cutoffs"},{id:"equilibrium",label:"Equilibrium"},
   {id:"factions",label:"Factions Extension"},{id:"interactive",label:"Interactive: Posterior Curve"},
   {id:"montecarlo",label:"Monte Carlo Simulation"},{id:"senegal",label:"Senegal Motivation"},
-  {id:"scenarios",label:"Scenario Explorer"},{id:"conclusion",label:"Conclusion"},
+  {id:"scenarios",label:"Scenario Explorer"},
   {id:"references",label:"References"},
 ];
 
 function IPGTableOfContents({TC}){
-  const[active,setActive]=useState("intro");
+  const[active,setActive]=useState("baseline");
   useEffect(()=>{
     const obs=new IntersectionObserver((entries)=>{
       entries.forEach(e=>{if(e.isIntersecting)setActive(e.target.id)});
