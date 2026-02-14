@@ -805,40 +805,6 @@ class IPGErrorBoundary extends React.Component{
 function IntraPartyArticle({TC:_TC}){
   const TC=_TC||C;
   const[mode,setMode]=useState("general");
-  const[activeSection,setActiveSection]=useState("intro");
-  const sectionRefs=useRef({});
-
-  useEffect(()=>{
-    try{
-      const obs=new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{if(e.isIntersecting)setActiveSection(e.target.id)});
-      },{rootMargin:"-20% 0px -60% 0px",threshold:0});
-      const attach=()=>Object.values(sectionRefs.current).forEach(el=>{if(el)obs.observe(el)});
-      attach();
-      const t=setTimeout(attach,500);
-      return()=>{obs.disconnect();clearTimeout(t)};
-    }catch(e){}
-  },[]);
-
-  const regRef=(id)=>(el)=>{sectionRefs.current[id]=el};
-  const scrollTo=(id)=>{
-    const el=sectionRefs.current[id];
-    if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
-  };
-
-  const sections=[
-    {id:"intro",label:"Introduction"},
-    {id:"baseline",label:"Baseline Game"},
-    {id:"posteriors",label:"Posteriors and Cutoffs"},
-    {id:"equilibrium",label:"Equilibrium"},
-    {id:"factions",label:"Factions Extension"},
-    {id:"interactive",label:"Interactive: Posterior Curve"},
-    {id:"montecarlo",label:"Monte Carlo Simulation"},
-    {id:"senegal",label:"Senegal Motivation"},
-    {id:"scenarios",label:"Scenario Explorer"},
-    {id:"conclusion",label:"Conclusion"},
-    {id:"references",label:"References"},
-  ];
 
   const isTech=mode==="technical";
 
@@ -879,22 +845,6 @@ function IntraPartyArticle({TC:_TC}){
   };
 
   return(
-  <>
-    {/* LEFT TOC */}
-    <div className="ipg-toc-sidebar" style={{position:"fixed",top:200,left:"max(16px, calc(50% - 440px))",width:150,zIndex:10}}>
-      <nav style={{borderRight:"1px solid "+TC.brd,paddingRight:16}}>
-        <div style={sty.label}>CONTENTS</div>
-        {sections.map(s=>(
-          <div key={s.id} onClick={()=>scrollTo(s.id)} style={{
-            fontFamily:C.fm,fontSize:10,color:activeSection===s.id?TC.coral:TC.ink3,
-            padding:"4px 0",cursor:"pointer",borderRight:activeSection===s.id?"2px solid "+TC.coral:"2px solid transparent",
-            paddingRight:8,transition:"all .2s",fontWeight:activeSection===s.id?600:400
-          }}>{s.label}</div>
-        ))}
-      </nav>
-    </div>
-
-    {/* MAIN CONTENT */}
     <div style={{maxWidth:680,width:"100%",marginLeft:"auto"}}>
 
       {/* MODE TOGGLE */}
@@ -911,7 +861,7 @@ function IntraPartyArticle({TC:_TC}){
       </div>
 
       {/* ===== INTRODUCTION ===== */}
-      <section id="intro" ref={regRef("intro")}>
+      <section id="intro">
         <h2 style={sty.h2}>Introduction</h2>
         <p style={sty.p}>Many political movements that achieve power through mass mobilization face a specific structural problem after the transition: the separation between the leader who built the movement and the successor who holds formal office. The successor may continue the original program, or may use the accumulated symbolic capital to build an independent political machine. The founder typically has superior private information about the successor's trajectory, but faces a credibility problem: direct accusations appear self-interested, and exit from government risks ceding state capacity to the successor.</p>
         <p style={sty.p}>This paper proposes a formal framework for studying that problem. The central mechanism is a <em>clarification protocol</em>: a public action by the founder that does not simply "send a message" but instead changes the informational environment. Specifically, it increases the diagnostic content of subsequent observable actions (appointments, alliances, legislative choices) and raises the attribution cost of deviation from the founding program.</p>
@@ -920,7 +870,7 @@ function IntraPartyArticle({TC:_TC}){
       </section>
 
       {/* ===== BASELINE GAME ===== */}
-      <section id="baseline" ref={regRef("baseline")}>
+      <section id="baseline">
         <h2 style={sty.h2}>The Baseline Game</h2>
         <p style={sty.p}>The game involves three types of players: a founder (<Tex tex="F"/>), a successor (<Tex tex="S"/>), and a mass of militants (<Tex tex="M"/>). The successor has a private type <Tex tex="\theta \in \{L, A\}"/> that is either Loyal or Autonomist. The prior probability that the successor is loyal is denoted <Tex tex="\pi \in (0,1)"/>.</p>
         <p style={sty.p}>The timeline proceeds in three stages. First, the founder chooses a clarification regime <Tex tex="m \in \{H, N\}"/>: either high salience or normal. Second, the successor chooses an alliance posture <Tex tex="a \in \{0, 1\}"/>, where <Tex tex="a = 0"/> represents loyalty to the program and <Tex tex="a = 1"/> represents autonomist drift. Third, militants observe a noisy public signal:</p>
@@ -951,7 +901,7 @@ function IntraPartyArticle({TC:_TC}){
       </section>
 
       {/* ===== POSTERIORS AND CUTOFFS ===== */}
-      <section id="posteriors" ref={regRef("posteriors")}>
+      <section id="posteriors">
         <h2 style={sty.h2}>Posteriors and Cutoff Strategies</h2>
         <p style={sty.p}>Given the clarification regime <Tex tex="m"/> and the observed signal <Tex tex="x"/>, militants compute a posterior belief about the successor's type using Bayes' rule. Under the separating profile (<Tex tex="\theta = L \Rightarrow a = 0"/>, <Tex tex="\theta = A \Rightarrow a = 1"/>), the signal <Tex tex="x"/> is drawn from <Tex tex="\mathcal{N}(0, \sigma_m^2)"/> if the type is loyal, and <Tex tex="\mathcal{N}(1, \sigma_m^2)"/> if the type is autonomist.</p>
 
@@ -970,7 +920,7 @@ function IntraPartyArticle({TC:_TC}){
       </section>
 
       {/* ===== EQUILIBRIUM ===== */}
-      <section id="equilibrium" ref={regRef("equilibrium")}>
+      <section id="equilibrium">
         <h2 style={sty.h2}>Equilibrium and the Clarification Effect</h2>
 
         <Formal type="assumption" id="1" label="Type-monotone alliance incentives">
@@ -989,7 +939,7 @@ function IntraPartyArticle({TC:_TC}){
       </section>
 
       {/* ===== FACTIONS EXTENSION ===== */}
-      <section id="factions" ref={regRef("factions")}>
+      <section id="factions">
         <h2 style={sty.h2}>Extension: Factions, Noisy Alliances, and Thresholds</h2>
         <p style={sty.p}>The baseline model treated militants as a single mass. The extension introduces two factions: a base (<Tex tex="B"/>) and cadres (<Tex tex="E"/>). Each faction has its own payoff parameters and therefore its own belief threshold.</p>
 
@@ -1013,21 +963,21 @@ function IntraPartyArticle({TC:_TC}){
       </section>
 
       {/* ===== INTERACTIVE POSTERIOR CURVE ===== */}
-      <section id="interactive" ref={regRef("interactive")}>
+      <section id="interactive">
         <h2 style={sty.h2}>Interactive: Posterior Curve and Faction Cutoffs</h2>
         <p style={sty.p}>The plot below shows the posterior belief <Tex tex="\mu(x)"/> as a function of the observed signal <Tex tex="x"/>, along with the faction cutoffs <Tex tex="x_B^*"/> and <Tex tex="x_E^*"/>. Use the sliders to adjust the prior probability <Tex tex="\pi"/> and the noise parameter <Tex tex="\sigma"/>. Observe how the cutoffs shift and how the gap between base and cadre thresholds widens or narrows.</p>
         <PosteriorPlot TC={TC}/>
       </section>
 
       {/* ===== MONTE CARLO ===== */}
-      <section id="montecarlo" ref={regRef("montecarlo")}>
+      <section id="montecarlo">
         <h2 style={sty.h2}>Monte Carlo Simulation</h2>
         <p style={sty.p}>The panel below runs 1000 simulated draws of the game per click. Each run draws a type (<Tex tex="L"/> or <Tex tex="A"/> with probability <Tex tex="\pi"/>), draws a signal <Tex tex="x"/> conditional on the separating profile, and computes each faction's support decision. The histogram shows the distribution of observed signals. The bar chart shows the frequency of each support outcome (both support, only cadres support, neither supports).</p>
         <MonteCarloPanel TC={TC}/>
       </section>
 
       {/* ===== SENEGAL MOTIVATION ===== */}
-      <section id="senegal" ref={regRef("senegal")}>
+      <section id="senegal">
         <h2 style={sty.h2}>Connection to the Senegal Motivation (Late 2025)</h2>
         <p style={{...sty.p,fontStyle:"italic",color:TC.ink3}}>This section is interpretive. The model concerns strategic logic, not a claim about any individual's private intentions. All political facts are sourced; interpretations through the model are explicitly labeled.</p>
 
@@ -1039,14 +989,14 @@ function IntraPartyArticle({TC:_TC}){
       </section>
 
       {/* ===== SCENARIO EXPLORER ===== */}
-      <section id="scenarios" ref={regRef("scenarios")}>
+      <section id="scenarios">
         <h2 style={sty.h2}>Scenario Explorer: 2027 and 2029</h2>
         <p style={{...sty.p,fontStyle:"italic",color:TC.ink3}}>The following scenarios are conditional model implications, not predictions. They describe what the model would imply if specific observable conditions were to obtain. The parameters used in the simulator above can be adjusted to explore each scenario numerically.</p>
         <ScenarioExplorer TC={TC}/>
       </section>
 
       {/* ===== CONCLUSION ===== */}
-      <section id="conclusion" ref={regRef("conclusion")}>
+      <section id="conclusion">
         <h2 style={sty.h2}>Conclusion</h2>
         <p style={sty.p}>This paper proposed a framework for clarification in intra-party leadership games. When an informed founder cannot credibly exit and cannot directly accuse a successor without appearing self-interested, the founder may still be able to activate a public protocol that changes the informational environment and accountability structure. The protocol makes subsequent alliance and appointment choices more diagnostic and deviations more publicly attributable.</p>
         <p style={sty.p}>The baseline model yields posterior-threshold behavior and identifies the conditions under which triggering a clarification protocol is attractive for the founder. The extension with heterogeneous factions delivers cutoff strategies with the base stricter than cadres, implying earlier support loss among the base when the successor pursues an autonomist line.</p>
@@ -1054,7 +1004,7 @@ function IntraPartyArticle({TC:_TC}){
       </section>
 
       {/* ===== REFERENCES ===== */}
-      <section id="references" ref={regRef("references")}>
+      <section id="references">
         <h2 style={sty.h2}>References</h2>
         <div style={{borderTop:"1px solid "+TC.brd,paddingTop:16}}>
           {cites.map(c=>(
@@ -1066,8 +1016,7 @@ function IntraPartyArticle({TC:_TC}){
         </div>
       </section>
 
-    </div>{/* end main content */}
-  </>);
+    </div>);
 }
 
 
@@ -1566,6 +1515,41 @@ function FLogo({size=48,TC}){
     <text x="30" y="44" textAnchor="middle" fontSize="38" fontFamily={C.fd} fontWeight="900" fill="#fff" opacity=".95">F</text>
   </svg>)}
 
+const IPG_SECTIONS=[
+  {id:"intro",label:"Introduction"},{id:"baseline",label:"Baseline Game"},
+  {id:"posteriors",label:"Posteriors and Cutoffs"},{id:"equilibrium",label:"Equilibrium"},
+  {id:"factions",label:"Factions Extension"},{id:"interactive",label:"Interactive: Posterior Curve"},
+  {id:"montecarlo",label:"Monte Carlo Simulation"},{id:"senegal",label:"Senegal Motivation"},
+  {id:"scenarios",label:"Scenario Explorer"},{id:"conclusion",label:"Conclusion"},
+  {id:"references",label:"References"},
+];
+
+function IPGTableOfContents({TC}){
+  const[active,setActive]=useState("intro");
+  useEffect(()=>{
+    const obs=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting)setActive(e.target.id)});
+    },{rootMargin:"-20% 0px -60% 0px",threshold:0});
+    const attach=()=>IPG_SECTIONS.forEach(s=>{const el=document.getElementById(s.id);if(el)obs.observe(el)});
+    attach();const t=setTimeout(attach,500);
+    return()=>{obs.disconnect();clearTimeout(t)};
+  },[]);
+  const scrollTo=(id)=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})};
+  return(
+  <div className="ipg-toc-sidebar" style={{position:"fixed",top:200,left:"max(16px, calc(50% - 440px))",width:150,zIndex:10}}>
+    <nav style={{borderRight:"1px solid "+TC.brd,paddingRight:16}}>
+      <div style={{fontFamily:C.fm,fontSize:9,letterSpacing:2,fontWeight:700,color:TC.coral,marginBottom:6}}>CONTENTS</div>
+      {IPG_SECTIONS.map(s=>(
+        <div key={s.id} onClick={()=>scrollTo(s.id)} style={{
+          fontFamily:C.fm,fontSize:10,color:active===s.id?TC.coral:TC.ink3,
+          padding:"4px 0",cursor:"pointer",borderRight:active===s.id?"2px solid "+TC.coral:"2px solid transparent",
+          paddingRight:8,transition:"all .2s",fontWeight:active===s.id?600:400
+        }}>{s.label}</div>
+      ))}
+    </nav>
+  </div>);
+}
+
 function SiteComments({TC}){
   const[comments,setComments]=useState([]);const[nm,setNm]=useState("");const[tx,setTx]=useState("");
   const add=()=>{if(!nm.trim()||!tx.trim())return;
@@ -1907,7 +1891,8 @@ button:hover{filter:brightness(1.08)}
     {articleSlug&&article&&(
     <div style={{padding:"40px 0 60px"}}>
       <button onClick={()=>nav("fulgurances")} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,fontFamily:C.fm,color:TC.coral,marginBottom:20,padding:0}}>← Fulgurances</button>
-      {article.isIPG?(
+      {article.isIPG?(<>
+        <IPGTableOfContents TC={TC}/>
         <FadeIn>
           <div style={{maxWidth:680,marginLeft:"auto"}}>
             <span style={{background:TC[catColor[article.cat]],color:"#fff",padding:"3px 10px",borderRadius:3,fontSize:9,fontFamily:C.fm,letterSpacing:1.2,fontWeight:600}}>
@@ -1924,7 +1909,7 @@ button:hover{filter:brightness(1.08)}
             <SiteComments TC={TC}/>
           </div>
         </FadeIn>
-      ):article.isVIH?(
+      </>):article.isVIH?(
         <FadeIn>
           <span style={{background:TC[catColor[article.cat]],color:"#fff",padding:"3px 10px",borderRadius:3,fontSize:9,fontFamily:C.fm,letterSpacing:1.2,fontWeight:600}}>
             {(BCATS.find(cc=>cc.id===article.cat)||{}).label}</span>
