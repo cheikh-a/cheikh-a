@@ -813,8 +813,10 @@ function IntraPartyArticle({TC:_TC}){
       const obs=new IntersectionObserver((entries)=>{
         entries.forEach(e=>{if(e.isIntersecting)setActiveSection(e.target.id)});
       },{rootMargin:"-20% 0px -60% 0px",threshold:0});
-      Object.values(sectionRefs.current).forEach(el=>{if(el)obs.observe(el)});
-      return()=>obs.disconnect();
+      const attach=()=>Object.values(sectionRefs.current).forEach(el=>{if(el)obs.observe(el)});
+      attach();
+      const t=setTimeout(attach,500);
+      return()=>{obs.disconnect();clearTimeout(t)};
     }catch(e){}
   },[]);
 
