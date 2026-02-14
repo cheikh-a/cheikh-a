@@ -1583,6 +1583,37 @@ function SiteComments({TC}){
       <button onClick={add} style={{alignSelf:"flex-start",background:TC.coral,color:"#fff",border:"none",borderRadius:4,padding:"8px 20px",fontSize:11,fontFamily:C.fm,fontWeight:600,cursor:"pointer"}}>Publier</button>
     </div></div>)}
 
+function ShareButtons({article,TC}){
+  const[copied,setCopied]=useState(false);
+  const url=typeof window!=="undefined"?window.location.origin+window.location.pathname+"#/fulgurances/"+article.slug:"";
+  const fullText=encodeURIComponent(article.title+(article.subtitle?" \u2014 "+article.subtitle:""));
+  const encodedUrl=encodeURIComponent(url);
+  const links=[
+    {label:"\ud835\udd4f",href:"https://x.com/intent/tweet?text="+fullText+"&url="+encodedUrl,color:"#000",dk:"#E7E9EA"},
+    {label:"Facebook",href:"https://www.facebook.com/sharer/sharer.php?u="+encodedUrl,color:"#1877F2",dk:"#4A9AF5"},
+    {label:"LinkedIn",href:"https://www.linkedin.com/sharing/share-offsite/?url="+encodedUrl,color:"#0A66C2",dk:"#3B8DE0"},
+    {label:"WhatsApp",href:"https://wa.me/?text="+fullText+"%20"+encodedUrl,color:"#25D366",dk:"#25D366"},
+  ];
+  const isDark=TC.bg.startsWith("#1");
+  const btnS={background:"none",border:"1px solid "+TC.brd,borderRadius:6,padding:"8px 14px",cursor:"pointer",
+    fontSize:10,fontFamily:C.fm,fontWeight:600,textDecoration:"none",transition:"all .2s",
+    display:"inline-flex",alignItems:"center",gap:6};
+  const copyLink=()=>{try{navigator.clipboard.writeText(url).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2000)})}catch(e){}};
+  return(
+  <div style={{marginTop:32,marginBottom:8,paddingTop:20,borderTop:"1px solid "+TC.brd}}>
+    <div style={{fontSize:10,fontFamily:C.fm,color:TC.ink3,letterSpacing:2,marginBottom:12}}>PARTAGER</div>
+    <div style={{display:"flex",flexWrap:"wrap",gap:8}}>
+      {links.map(l=>(
+        <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
+          style={{...btnS,color:isDark?l.dk:l.color}}>{l.label}</a>
+      ))}
+      <button onClick={copyLink}
+        style={{...btnS,color:copied?TC.teal:TC.ink2}}>
+        {copied?"\u2713 Copied!":"Copy link"}</button>
+    </div>
+  </div>);
+}
+
 /* ARTICLES */
 const ARTICLES=[
 {id:1,slug:"ericson-laibson",title:"POTW: Ericson and Laibson (2018)",
@@ -1884,6 +1915,7 @@ button:hover{filter:brightness(1.08)}
             <span>{fmtDate(article.date,article.lang)}</span><span>{article.rt+" min"}</span>
             <span style={{color:TC[catColor[article.cat]]}}>English</span></div>
           <IPGErrorBoundary><IntraPartyArticle TC={TC}/></IPGErrorBoundary>
+          <ShareButtons article={article} TC={TC}/>
           <SiteComments TC={TC}/>
         </FadeIn>
       ):article.isVIH?(
@@ -1895,6 +1927,7 @@ button:hover{filter:brightness(1.08)}
           <div style={{display:"flex",gap:16,fontSize:10,fontFamily:C.fm,color:TC.ink3,marginBottom:28}}>
             <span>{fmtDate(article.date,article.lang)}</span><span>{article.rt+" min"}</span></div>
           <VIHArticle/>
+          <ShareButtons article={article} TC={TC}/>
           <SiteComments TC={TC}/>
         </FadeIn>
       ):(
@@ -1909,6 +1942,7 @@ button:hover{filter:brightness(1.08)}
           <div style={{width:40,height:1,background:TC.brd,marginBottom:28}}/>
           <div style={{fontFamily:C.fb,fontSize:15,color:TC.ink2,lineHeight:1.95,textAlign:"justify"}}>
             {renderBody(article.body,article.lang)}</div>
+          <ShareButtons article={article} TC={TC}/>
           <SiteComments TC={TC}/>
         </div></FadeIn>
       )}
@@ -1920,19 +1954,36 @@ button:hover{filter:brightness(1.08)}
       <FadeIn><h1 style={{fontFamily:C.fd,fontSize:34,fontWeight:900,color:TC.ink,marginBottom:24}}>Don’t go there...</h1></FadeIn>
       <FadeIn delay={.1}><div style={{background:TC.card,border:"1px solid "+TC.brd,borderRadius:8,padding:"24px 28px",marginBottom:20}}>
         <h2 style={{fontFamily:C.fd,fontSize:20,fontWeight:700,color:TC.ink,marginBottom:12}}>Spotify Playlist</h2>
-        <a href="https://open.spotify.com/playlist/5h18W822qby8oWSwoBu8q3" target="_blank" rel="noopener noreferrer" style={{display:"block",background:"linear-gradient(135deg,#1DB954,#191414)",borderRadius:8,padding:"20px 24px",textDecoration:"none",marginBottom:8}}>
-          <div style={{color:"#fff",fontSize:16,fontFamily:C.fd,fontWeight:700}}>Ethiopian Jazz – Curated Selection</div>
-          <div style={{color:"#1DB954",fontSize:11,fontFamily:C.fm,marginTop:4}}>Ouvrir dans Spotify ↗</div>
+        <div style={{borderRadius:12,overflow:"hidden",marginBottom:12}}>
+          <iframe src="https://open.spotify.com/embed/playlist/5h18W822qby8oWSwoBu8q3?utm_source=generator&theme=0"
+            width="100%" height="352" frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy" style={{display:"block",border:"none"}}/>
+        </div>
+        <a href="https://open.spotify.com/playlist/5h18W822qby8oWSwoBu8q3" target="_blank" rel="noopener noreferrer"
+          style={{display:"inline-block",background:"linear-gradient(135deg,#1DB954,#191414)",borderRadius:8,padding:"12px 20px",textDecoration:"none",marginBottom:8}}>
+          <div style={{color:"#fff",fontSize:14,fontFamily:C.fd,fontWeight:700}}>Ethiopian Jazz – Curated Selection</div>
+          <div style={{color:"#1DB954",fontSize:10,fontFamily:C.fm,marginTop:4}}>Ouvrir dans Spotify ↗</div>
         </a>
-        <p style={{fontFamily:C.fb,fontSize:13,color:TC.ink3,lineHeight:1.6}}>A curated selection of my favorite Ethiopian jazz tracks.</p>
+        <p style={{fontFamily:C.fb,fontSize:13,color:TC.ink3,lineHeight:1.6,marginTop:8}}>A curated selection of my favorite Ethiopian jazz tracks.</p>
       </div></FadeIn>
       <FadeIn delay={.2}><div style={{background:TC.card,border:"1px solid "+TC.brd,borderRadius:8,padding:"24px 28px",marginBottom:20}}>
         <h2 style={{fontFamily:C.fd,fontSize:20,fontWeight:700,color:TC.ink,marginBottom:12}}>Apple Music Playlist</h2>
-        <a href="https://music.apple.com/ca/playlist/bassit/pl.u-11zBMeasN7v6B4D" target="_blank" rel="noopener noreferrer" style={{display:"block",background:"linear-gradient(135deg,#FC3C44,#000)",borderRadius:8,padding:"20px 24px",textDecoration:"none",marginBottom:8}}>
-          <div style={{color:"#fff",fontSize:16,fontFamily:C.fd,fontWeight:700}}>Bassit – Best Bass Lines</div>
-          <div style={{color:"#FC3C44",fontSize:11,fontFamily:C.fm,marginTop:4}}>Ouvrir dans Apple Music ↗</div>
+        <div style={{borderRadius:10,overflow:"hidden",marginBottom:12}}>
+          <iframe
+            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+            frameBorder="0" height="450"
+            style={{width:"100%",overflow:"hidden",display:"block",border:"none"}}
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/ca/playlist/bassit/pl.u-11zBMeasN7v6B4D"
+            loading="lazy"/>
+        </div>
+        <a href="https://music.apple.com/ca/playlist/bassit/pl.u-11zBMeasN7v6B4D" target="_blank" rel="noopener noreferrer"
+          style={{display:"inline-block",background:"linear-gradient(135deg,#FC3C44,#000)",borderRadius:8,padding:"12px 20px",textDecoration:"none",marginBottom:8}}>
+          <div style={{color:"#fff",fontSize:14,fontFamily:C.fd,fontWeight:700}}>Bassit – Best Bass Lines</div>
+          <div style={{color:"#FC3C44",fontSize:10,fontFamily:C.fm,marginTop:4}}>Ouvrir dans Apple Music ↗</div>
         </a>
-        <p style={{fontFamily:C.fb,fontSize:13,color:TC.ink3,lineHeight:1.6}}>A collection of songs with some of the best bass lines. Press play and enjoy the bass!</p>
+        <p style={{fontFamily:C.fb,fontSize:13,color:TC.ink3,lineHeight:1.6,marginTop:8}}>A collection of songs with some of the best bass lines. Press play and enjoy the bass!</p>
       </div></FadeIn>
       <FadeIn delay={.3}><div style={{background:TC.card,border:"1px solid "+TC.brd,borderRadius:8,padding:"24px 28px",marginBottom:20}}>
         <h2 style={{fontFamily:C.fd,fontSize:20,fontWeight:700,color:TC.ink,marginBottom:12}}>Film Recommendations</h2>
