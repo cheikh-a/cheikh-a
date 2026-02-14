@@ -879,7 +879,7 @@ function IntraPartyArticle({TC:_TC}){
   return(
   <div style={{position:"relative",overflowX:"hidden"}}>
     {/* LEFT TOC */}
-    <div className="ipg-toc-sidebar" style={{position:"fixed",top:200,left:"max(16px, calc(50% - 200px))",width:150,zIndex:10}}>
+    <div className="ipg-toc-sidebar" style={{position:"fixed",top:200,left:"max(16px, calc(50% - 340px))",width:150,zIndex:10}}>
       <nav style={{borderRight:"1px solid "+TC.brd,paddingRight:16}}>
         <div style={sty.label}>CONTENTS</div>
         {sections.map(s=>(
@@ -1907,16 +1907,20 @@ button:hover{filter:brightness(1.08)}
       <button onClick={()=>nav("fulgurances")} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,fontFamily:C.fm,color:TC.coral,marginBottom:20,padding:0}}>← Fulgurances</button>
       {article.isIPG?(
         <FadeIn>
-          <span style={{background:TC[catColor[article.cat]],color:"#fff",padding:"3px 10px",borderRadius:3,fontSize:9,fontFamily:C.fm,letterSpacing:1.2,fontWeight:600}}>
-            {(BCATS.find(cc=>cc.id===article.cat)||{}).label}</span>
-          <h1 style={{fontFamily:C.fd,fontSize:28,fontWeight:900,color:TC.ink,lineHeight:1.15,margin:"14px 0 10px"}}>{article.title}</h1>
-          <p style={{fontFamily:C.fb,fontSize:15,color:TC.ink2,lineHeight:1.7,fontStyle:"italic",marginBottom:12}}>{article.subtitle}</p>
-          <div style={{display:"flex",gap:16,fontSize:10,fontFamily:C.fm,color:TC.ink3,marginBottom:28}}>
-            <span>{fmtDate(article.date,article.lang)}</span><span>{article.rt+" min"}</span>
-            <span style={{color:TC[catColor[article.cat]]}}>English</span></div>
+          <div style={{maxWidth:680,marginLeft:"auto"}}>
+            <span style={{background:TC[catColor[article.cat]],color:"#fff",padding:"3px 10px",borderRadius:3,fontSize:9,fontFamily:C.fm,letterSpacing:1.2,fontWeight:600}}>
+              {(BCATS.find(cc=>cc.id===article.cat)||{}).label}</span>
+            <h1 style={{fontFamily:C.fd,fontSize:28,fontWeight:900,color:TC.ink,lineHeight:1.15,margin:"14px 0 10px"}}>{article.title}</h1>
+            <p style={{fontFamily:C.fb,fontSize:15,color:TC.ink2,lineHeight:1.7,fontStyle:"italic",marginBottom:12}}>{article.subtitle}</p>
+            <div style={{display:"flex",gap:16,fontSize:10,fontFamily:C.fm,color:TC.ink3,marginBottom:28}}>
+              <span>{fmtDate(article.date,article.lang)}</span><span>{article.rt+" min"}</span>
+              <span style={{color:TC[catColor[article.cat]]}}>English</span></div>
+          </div>
           <IPGErrorBoundary><IntraPartyArticle TC={TC}/></IPGErrorBoundary>
-          <ShareButtons article={article} TC={TC}/>
-          <SiteComments TC={TC}/>
+          <div style={{maxWidth:680,marginLeft:"auto"}}>
+            <ShareButtons article={article} TC={TC}/>
+            <SiteComments TC={TC}/>
+          </div>
         </FadeIn>
       ):article.isVIH?(
         <FadeIn>
