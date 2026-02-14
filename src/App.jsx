@@ -1546,8 +1546,13 @@ Délibéré, phase aiguë : β̃ = 0.248, n = 5, 0 condom → P ≈ 76 %/mois`}<
 /* SITE HELPERS */
 function FadeIn({children,delay=0}){
   const[v,setV]=useState(false);const ref=useRef(null);
-  useEffect(()=>{const o=new IntersectionObserver(([e])=>{if(e.isIntersecting)setV(true)},{threshold:.1});
-    if(ref.current)o.observe(ref.current);return()=>o.disconnect()},[]);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const rect=el.getBoundingClientRect();
+    if(rect.top<window.innerHeight&&rect.bottom>0){setV(true);return}
+    const o=new IntersectionObserver(([e])=>{if(e.isIntersecting){setV(true);o.disconnect()}},{threshold:.05});
+    o.observe(el);return()=>o.disconnect();
+  },[]);
   return(<div ref={ref} style={{opacity:v?1:0,transform:v?"translateY(0)":"translateY(20px)",
     transition:`opacity .6s ease ${delay}s, transform .6s ease ${delay}s`}}>{children}</div>)}
 
