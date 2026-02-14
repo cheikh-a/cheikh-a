@@ -893,7 +893,7 @@ function IntraPartyArticle({TC:_TC}){
     </div>
 
     {/* MAIN CONTENT */}
-    <div style={{maxWidth:680,width:"100%"}}>
+    <div style={{maxWidth:680,width:"100%",marginLeft:"auto"}}>
 
       {/* MODE TOGGLE */}
       <div style={{display:"flex",gap:4,marginBottom:28}}>
