@@ -1793,7 +1793,7 @@ button:hover{filter:brightness(1.08)}
 
     {/* NAV */}
     <nav style={{position:"sticky",top:0,zIndex:100,background:TC.bg+"F0",backdropFilter:"blur(12px)",borderBottom:"1px solid "+TC.brd,transition:"background .4s"}}>
-      <div style={{maxWidth:880,margin:"0 auto",padding:"10px 24px",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+      <div style={{maxWidth:1000,margin:"0 auto",padding:"10px 24px",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
         <div style={{display:"flex",alignItems:"center",gap:10,cursor:"pointer"}} onClick={()=>nav("about")}>
           <span style={{fontFamily:C.fd,fontSize:18,fontWeight:900,color:TC.ink}}>CAMN</span>
         </div>
@@ -2007,7 +2007,7 @@ button:hover{filter:brightness(1.08)}
 
     {/* FOOTER */}
     <footer style={{borderTop:"1px solid "+TC.brd,padding:"28px 24px",marginTop:32}}>
-      <div style={{maxWidth:880,margin:"0 auto",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:24}}>
+      <div style={{maxWidth:1000,margin:"0 auto",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:24}}>
         <div>
           <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8}}>
             <FLogo size={22} TC={TC}/>
@@ -2019,7 +2019,7 @@ button:hover{filter:brightness(1.08)}
           {navItems.map(n=>(<button key={n.id} onClick={()=>nav(n.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:10,fontFamily:C.fm,color:TC.ink3,padding:0}}>{n.label}</button>))}
         </div>
       </div>
-      <div style={{maxWidth:880,margin:"16px auto 0",paddingTop:12,borderTop:"1px solid "+TC.brd}}>
+      <div style={{maxWidth:1000,margin:"16px auto 0",paddingTop:12,borderTop:"1px solid "+TC.brd}}>
         <span style={{fontSize:8,fontFamily:C.fm,color:TC.ink3}}>© 2026 CAMN</span>
       </div>
     </footer>
