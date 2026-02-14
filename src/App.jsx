@@ -879,7 +879,7 @@ function IntraPartyArticle({TC:_TC}){
   return(
   <div style={{position:"relative",overflowX:"hidden"}}>
     {/* LEFT TOC */}
-    <div className="ipg-toc-sidebar" style={{position:"fixed",top:80,left:"max(16px, calc(50% - 560px))",width:150,zIndex:10}}>
+    <div className="ipg-toc-sidebar" style={{position:"fixed",top:200,left:"max(16px, calc(50% - 380px))",width:150,zIndex:10}}>
       <nav style={{borderRight:"1px solid "+TC.brd,paddingRight:16}}>
         <div style={sty.label}>CONTENTS</div>
         {sections.map(s=>(
