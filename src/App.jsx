@@ -1810,7 +1810,7 @@ button:hover{filter:brightness(1.08)}
       </div>
     </nav>
 
-    <div style={{maxWidth:880,margin:"0 auto",padding:"0 24px"}}>
+    <div style={{maxWidth:1000,margin:"0 auto",padding:"0 24px"}}>
 
     {/* ABOUT */}
     {page==="about"&&!articleSlug&&(
