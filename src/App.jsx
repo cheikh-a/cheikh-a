@@ -439,17 +439,17 @@ function GameTreeViz({TC:_TC}){
     return()=>clearInterval(iv.current);
   },[playing]);
 
-  const W=560,H=320;
+  const W=560,H=400;
   const nodes=[
-    {id:"nature",x:280,y:30,label:"Nature",sub:"draws type"},
-    {id:"loyal",x:140,y:100,label:"Loyal",sub:"prob \u03c0"},
-    {id:"auton",x:420,y:100,label:"Autonomist",sub:"prob 1\u2212\u03c0"},
-    {id:"fL",x:60,y:180,label:"F: choose m",sub:"H or N"},
-    {id:"fA",x:340,y:180,label:"F: choose m",sub:"H or N"},
-    {id:"sL",x:60,y:250,label:"S: choose a",sub:"a=0 (loyal)"},
-    {id:"sA",x:340,y:250,label:"S: choose a",sub:"a=1 (drift)"},
-    {id:"mL",x:60,y:310,label:"M: observe x",sub:"support iff x < x*"},
-    {id:"mA",x:340,y:310,label:"M: observe x",sub:"withdraw if x > x*"},
+    {id:"nature",x:280,y:36,label:"Nature",sub:"draws type"},
+    {id:"loyal",x:140,y:120,label:"Loyal",sub:"prob \u03c0"},
+    {id:"auton",x:420,y:120,label:"Autonomist",sub:"prob 1\u2212\u03c0"},
+    {id:"fL",x:60,y:210,label:"F: choose m",sub:"H or N"},
+    {id:"fA",x:340,y:210,label:"F: choose m",sub:"H or N"},
+    {id:"sL",x:60,y:300,label:"S: choose a",sub:"a=0 (loyal)"},
+    {id:"sA",x:340,y:300,label:"S: choose a",sub:"a=1 (drift)"},
+    {id:"mL",x:60,y:380,label:"M: observe x",sub:"support iff x < x*"},
+    {id:"mA",x:340,y:380,label:"M: observe x",sub:"withdraw if x > x*"},
   ];
   const edges=[
     {from:"nature",to:"loyal",step:1},{from:"nature",to:"auton",step:1},
